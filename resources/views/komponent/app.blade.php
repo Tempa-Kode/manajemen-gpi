@@ -34,7 +34,9 @@
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-            @include('komponent.navigasi-admin')
+            <div class="container-fluid py-4">
+                @include('komponent.navigasi-admin')
+            </div>
         </div>
     </aside>
     <main class="main-content position-relative border-radius-lg ">
@@ -70,7 +72,9 @@
         </nav>
         <!-- End Navbar -->
 
-        @yield('content')
+        <div class="container-fluid py-4">
+            @yield('content')
+        </div>
 
     </main>
 
