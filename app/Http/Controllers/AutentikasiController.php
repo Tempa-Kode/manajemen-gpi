@@ -19,7 +19,7 @@ class AutentikasiController extends Controller
 
         if (Auth::attempt($kridensial)) {
             $request->session()->regenerate();
-            if (Auth::user()->role == 'admin') {
+            if (Auth::user()->hak_akses_id == 1) {
                 return redirect()->intended('dashboard');
             } else {
                 return redirect()->intended('home');
