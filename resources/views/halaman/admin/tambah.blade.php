@@ -67,11 +67,11 @@
                         <label for="jenis_kelamin" class="form-control-label">Jenis Kelamin</label>
                         <div class="d-flex">
                             <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki-laki" value="laki-laki" {{ old('jenis_kelamin') == 'L' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki-laki" value="L" {{ old('jenis_kelamin') == 'L' ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="laki-laki">Laki-Laki</label>
                             </div>
                             <div class="form-check ms-3">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="perempuan" {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="P" {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="perempuan">Perempuan</label>
                             </div>
                         </div>
