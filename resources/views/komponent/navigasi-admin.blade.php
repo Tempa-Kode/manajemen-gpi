@@ -78,6 +78,16 @@
                     <span class="nav-link-text ms-1">Tamu</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" class="d-flex justify-content-center mt-3" method="POST" id="logout-form">
+                    @csrf
+                    @method('POST')
+                    <button type="submit" class="nav-link text-dark text-sm opacity-10 w-75 border-0 bg-danger text-white rounded">
+                        <i class="fa-solid fa-power-off"></i>
+                        <span class="nav-link-text ms-1 ">Logout</span>
+                    </button>
+                </form>
+            </li>
         </ul>
     </div>
 </aside>
