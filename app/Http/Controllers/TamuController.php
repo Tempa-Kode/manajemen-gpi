@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TamuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * menampilkan seluruh data.
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class TamuController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * menampilkan halaman untuk menambah data.
      */
     public function create()
     {
@@ -30,7 +30,7 @@ class TamuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * menyimpan data baru (form admin).
      */
     public function store(TambahUserRequest $request)
     {
@@ -54,7 +54,7 @@ class TamuController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * tampilkan halaman edit dan menampilkan data.
      */
     public function edit($id)
     {
@@ -63,7 +63,7 @@ class TamuController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * update data.
      */
     public function update(EditUserRequest $request, string $id)
     {
@@ -88,7 +88,7 @@ class TamuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * hapus data berdasarkan id.
      */
     public function destroy($id)
     {
@@ -98,6 +98,32 @@ class TamuController extends Controller
             return redirect()->route('tamu.index')->with('success', 'data tamu berhasil dihapus');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Gagal menghapus user: ' . $e->getMessage()]);
+        }
+    }
+
+    public function daftarTamu()
+    {
+        return view('user.daftar');
+    }
+
+    public function prosesDaftarTamu(TambahUserRequest $request)
+    {
+        $request->validated();
+        $aksesTamu = HakAkses::where('akses', 'Tamu')->first();
+        try {
+            User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'no_telp' => $request->no_telp,
+                'alamat' => $request->alamat,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'hak_akses_id' => $aksesTamu->id,
+            ]);
+            return redirect()->route('login')->with('success', 'Pendaftaran berhasil, silakan login');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Gagal mendaftar silahkan coba kembali']);
         }
     }
 }

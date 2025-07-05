@@ -52,6 +52,10 @@
                                     <div class="alert alert-danger text-white" role="alert">
                                         {{ $errors->first('message') }}
                                     </div>
+                                @elseif (session('success'))
+                                    <div class="alert alert-success text-white" role="alert">
+                                        <strong>Berhasil!</strong> {{ session('success') }}
+                                    </div>
                                 @endif
                                 <form action="{{ route('prosesLogin') }}" method="POST">
                                     @csrf
@@ -70,7 +74,7 @@
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                 <p class="mb-4 text-sm mx-auto">
                                     Belum memiliki akun?
-                                    <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Daftar</a>
+                                    <a href="{{ route('daftarTamu') }}" class="text-primary text-gradient font-weight-bold">Daftar Sebagai Tamu</a>
                                 </p>
                             </div>
                         </div>
