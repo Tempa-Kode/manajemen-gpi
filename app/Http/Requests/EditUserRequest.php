@@ -22,7 +22,7 @@ class EditUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $userId = $this->route('admin') ?? $this->route('tamu');
+        $userId = $this->route('admin') ?? $this->route('tamu') ?? $this->route('jemaat');
 
         return [
             'name' => 'required|string|max:255',

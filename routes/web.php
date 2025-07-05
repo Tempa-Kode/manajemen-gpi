@@ -24,4 +24,8 @@ Route::resource('tamu', App\Http\Controllers\TamuController::class)
     ->middleware(['auth', 'admin'])
     ->names('tamu');
 
+Route::resource('jemaat', App\Http\Controllers\JemaatController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('jemaat');
+
 
