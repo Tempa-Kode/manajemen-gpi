@@ -15,3 +15,7 @@ Route::get('dashboard', [AutentikasiController::class, 'dashboard'])->middleware
 Route::resource('admin', App\Http\Controllers\AdminController::class)
     ->middleware(['auth', 'admin'])
     ->names('admin');
+
+Route::resource('tamu', App\Http\Controllers\TamuController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('tamu');
