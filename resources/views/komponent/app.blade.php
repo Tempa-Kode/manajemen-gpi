@@ -28,6 +28,7 @@
 
     {{-- Font Awesome --}}
     <script src="https://kit.fontawesome.com/c3621d3bda.js" crossorigin="anonymous"></script>
+    @stack('styles')
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -96,6 +97,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.1.0') }}"></script>
+   @stack('scripts')
 </body>
 
 </html>

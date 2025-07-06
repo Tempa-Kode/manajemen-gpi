@@ -31,3 +31,7 @@ Route::resource('jemaat', App\Http\Controllers\JemaatController::class)
 Route::resource('jadwal-ibadah', App\Http\Controllers\JadwalIbadahController::class)
     ->middleware(['auth', 'admin'])
     ->names('jadwal-ibadah');
+
+Route::resource('warta-gereja', App\Http\Controllers\WartaGerejaController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('warta-gereja');

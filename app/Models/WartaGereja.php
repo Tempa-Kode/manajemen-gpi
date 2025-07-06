@@ -10,5 +10,6 @@ class WartaGereja extends Model
     protected $fillable = [
         'nama_warta',
         'tanggal',
+        'warta',
     ];
 }
