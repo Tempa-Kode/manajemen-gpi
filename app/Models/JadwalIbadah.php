@@ -13,4 +13,9 @@ class JadwalIbadah extends Model
         'tanggal',
         'jam',
     ];
+
+    public function pendaftarIbadah()
+    {
+        return $this->hasMany(PendaftaranIbadah::class, 'jadwal_ibadah_id');
+    }
 }

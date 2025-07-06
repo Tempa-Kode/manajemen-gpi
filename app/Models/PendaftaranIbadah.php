@@ -12,4 +12,14 @@ class PendaftaranIbadah extends Model
         'jadwal_ibadah_id',
         'keterlibatan',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function jadwalIbadah()
+    {
+        return $this->belongsTo(JadwalIbadah::class, 'jadwal_ibadah_id');
+    }
 }
