@@ -10,7 +10,7 @@ class PendaftaranIbadah extends Model
     protected $fillable = [
         'user_id',
         'jadwal_ibadah_id',
-        'keterlibatan',
+        'keterangan',
     ];
 
     public function user()

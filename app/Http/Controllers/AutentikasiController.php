@@ -25,7 +25,7 @@ class AutentikasiController extends Controller
             if (Auth::user()->hak_akses_id == 1) {
                 return redirect()->intended('dashboard');
             } else {
-                return redirect()->intended('home');
+                return redirect()->route('home')->with('success', 'Anda berhasil masuk sebagai ' . Auth::user()->name);
             }
         }
 
