@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang-gereja', [HomeController::class, 'tentangGereja'])->name('tentangGereja');
+Route::get('/struktur-gereja', [HomeController::class, 'strukturGereja'])->name('strukturGereja');
 Route::get('/jadwal-pelayanan', [HomeController::class, 'jadwalPelayanan'])->name('jadwalPelayanan');
 Route::get('/pendaftaran-ibadah', [HomeController::class, 'pendaftaranIbadah'])->name('pendaftaranIbadah');
 Route::post('/pendaftaran-ibadah', [HomeController::class, 'storePendaftaranIbadah'])->name('pendaftaranIbadah.store');

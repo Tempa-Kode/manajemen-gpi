@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('landing.tentang-gereja');
     }
 
+    public function strukturGereja()
+    {
+        return view('landing.struktur-gereja');
+    }
+
     public function jadwalPelayanan()
     {
         // Ambil tanggal awal dan akhir bulan ini
