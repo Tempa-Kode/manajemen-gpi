@@ -30,20 +30,7 @@
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('assets/img/favicon.ico') }}" alt="logo gpi" class="img-fluid">
-      </a>
-
-      @include('komponent.navigasi-landing')
-
-      <a class="btn-getstarted" href="index.html#about">Login</a>
-
-    </div>
-  </header>
+    @include('komponent.navigasi-landing')
 
   <main class="main">
 
@@ -68,7 +55,7 @@
               <p class="mb-4 mb-md-5"></p>
 
               <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Daftar Ibadah</a>
+                <a href="{{ route('pendaftaranIbadah') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Daftar Ibadah</a>
               </div>
             </div>
           </div>

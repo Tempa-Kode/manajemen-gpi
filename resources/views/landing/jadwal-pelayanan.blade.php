@@ -40,19 +40,7 @@
 
 <body class="starter-page-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <img src="{{ asset('assets/img/favicon.ico') }}" alt="logo gpi" class="img-fluid">
-      </a>
-
-      @include('komponent.navigasi-landing')
-
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
-
-    </div>
-  </header>
+  @include('komponent.navigasi-landing')
 
   <main class="main">
 
