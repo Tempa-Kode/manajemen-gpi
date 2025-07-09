@@ -14,7 +14,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Pengguna</p>
                                 <h5 class="font-weight-bolder">
-                                    $53,000
+                                    {{ $dataPengguna }}
                                 </h5>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Jemaat</p>
                                 <h5 class="font-weight-bolder">
-                                    2,300
+                                    {{ $totalJemaat }}
                                 </h5>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Tamu</p>
                                 <h5 class="font-weight-bolder">
-                                    +3,462
+                                    {{ $dataTamu }}
                                 </h5>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Admin</p>
                                 <h5 class="font-weight-bolder">
-                                    $103,430
+                                    {{ $dataAdmin }}
                                 </h5>
                             </div>
                         </div>
