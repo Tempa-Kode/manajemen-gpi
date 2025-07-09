@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/tentang-gereja', [HomeController::class, 'tentangGereja'])->name('tentangGereja');
+Route::get('/jadwal-pelayanan', [HomeController::class, 'jadwalPelayanan'])->name('jadwalPelayanan');
 
 Route::get('login', [AutentikasiController::class, 'login'])->name('login');
 Route::post('login', [AutentikasiController::class, 'prosesLogin'])->name('prosesLogin');
