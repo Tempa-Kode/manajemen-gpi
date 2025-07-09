@@ -13,7 +13,7 @@ class JenisIbadahController extends Controller
     public function index()
     {
         $jenisIbadah = JenisIbadah::withCount('jadwalIbadah')->paginate(10);
-        return view('admin.jenis-ibadah.index', compact('jenisIbadah'));
+        return view('halaman.jenis-ibadah.index', compact('jenisIbadah'));
     }
 
     /**
@@ -21,7 +21,7 @@ class JenisIbadahController extends Controller
      */
     public function create()
     {
-        return view('admin.jenis-ibadah.create');
+        return view('halaman.jenis-ibadah.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class JenisIbadahController extends Controller
             $query->orderBy('tanggal', 'desc');
         }]);
 
-        return view('admin.jenis-ibadah.show', compact('jenisIbadah'));
+        return view('halaman.jenis-ibadah.show', compact('jenisIbadah'));
     }
 
     /**
@@ -60,7 +60,7 @@ class JenisIbadahController extends Controller
      */
     public function edit(JenisIbadah $jenisIbadah)
     {
-        return view('admin.jenis-ibadah.edit', compact('jenisIbadah'));
+        return view('halaman.jenis-ibadah.edit', compact('jenisIbadah'));
     }
 
     /**

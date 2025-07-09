@@ -54,5 +54,7 @@ class DatabaseSeeder extends Seeder
             'no_telp' => '081234567890',
             'hak_akses_id' => $tamuAkses->id,
         ]);
+
+        $this->call(JenisIbadahSeeder::class);
     }
 }

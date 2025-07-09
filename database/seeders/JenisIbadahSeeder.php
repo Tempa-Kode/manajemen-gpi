@@ -14,16 +14,12 @@ class JenisIbadahSeeder extends Seeder
     public function run(): void
     {
         $jenisIbadah = [
-            ['jenis_ibadah' => 'Kebaktian Umum'],
-            ['jenis_ibadah' => 'Doa Syafaat'],
-            ['jenis_ibadah' => 'Ibadah Anak'],
-            ['jenis_ibadah' => 'Ibadah Remaja'],
-            ['jenis_ibadah' => 'Ibadah Lansia'],
-            ['jenis_ibadah' => 'Perayaan Paskah'],
-            ['jenis_ibadah' => 'Perayaan Natal'],
-            ['jenis_ibadah' => 'Ibadah Rumah'],
-            ['jenis_ibadah' => 'Ibadah Pernikahan'],
-            ['jenis_ibadah' => 'Ibadah Pemakaman'],
+            ['jenis_ibadah' => 'Ibadah Minggu Raya'],
+            ['jenis_ibadah' => 'Ibadah Mingguan'],
+            ['jenis_ibadah' => 'Ibadah Pemuda/I'],
+            ['jenis_ibadah' => 'Ibadah Kaum Ibu'],
+            ['jenis_ibadah' => 'Ibadah Sekolah Minggu'],
+            ['jenis_ibadah' => 'Ibadah Selasa Malam'],
         ];
 
         foreach ($jenisIbadah as $jenis) {

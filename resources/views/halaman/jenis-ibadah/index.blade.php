@@ -1,5 +1,7 @@
 @extends('komponent.app')
 
+@section('halaman', 'Jenis Ibadah')
+
 @section('title', 'Data Jenis Ibadah - Manajemen GPI')
 
 @section('halaman', 'Data Jenis Ibadah')
