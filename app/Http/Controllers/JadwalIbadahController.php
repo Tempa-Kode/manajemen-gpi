@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalIbadah;
+use App\Models\Jemaat;
 use Illuminate\Http\Request;
 
 class JadwalIbadahController extends Controller
@@ -16,26 +17,34 @@ class JadwalIbadahController extends Controller
 
     public function create()
     {
-        return view('halaman.jadwal-ibadah.tambah');
+        $rumahKeluarga = Jemaat::select('nama_keluarga', 'alamat')
+            ->orderBy('nama_keluarga')
+            ->get();
+        return view('halaman.jadwal-ibadah.tambah', compact('rumahKeluarga'));
     }
 
     public function store(Request $request)
     {
         $validasi = $request->validate([
             'jenis_ibadah' => 'required|string|max:30',
-            'hari' => 'required|string|max:10|in:Senin,Selasa,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
+            'hari' => 'required|string|max:10|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
             'tanggal' => 'required|date',
-            'jam' => 'required|date_format:H:i',
+            'jam' => ['required', 'regex:/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/'],
+            'tempat' => 'required|string|max:255',
+            'alamat' => 'nullable|string|max:500',
         ], [
             'jenis_ibadah.required' => 'Jenis ibadah harus diisi.',
             'jenis_ibadah.string' => 'Jenis ibadah harus berupa teks.',
             'jenis_ibadah.max' => 'Jenis ibadah maksimal 30 karakter.',
             'hari.required' => 'Hari ibadah harus diisi.',
-            'hari.in' => 'Hari ibadah harus salah satu dari: Senin, Selasa, Rabu, kamis, Jumat, Sabtu, atau Minggu.',
+            'hari.in' => 'Hari ibadah harus salah satu dari: Senin, Selasa, Rabu, Kamis, Jumat, Sabtu, atau Minggu.',
             'tanggal.required' => 'Tanggal ibadah harus diisi.',
             'tanggal.date' => 'Tanggal ibadah harus berupa tanggal yang valid.',
             'jam.required' => 'Jam ibadah harus diisi.',
-            'jam.date_format' => 'Jam ibadah harus dalam format HH:MM.',
+            'jam.regex' => 'Jam ibadah harus dalam format HH:MM (contoh: 09:30).',
+            'tempat.required' => 'Tempat ibadah harus diisi.',
+            'tempat.max' => 'Tempat ibadah maksimal 255 karakter.',
+            'alamat.max' => 'Alamat maksimal 500 karakter.',
         ]);
 
         try{
@@ -49,7 +58,10 @@ class JadwalIbadahController extends Controller
     public function edit($id)
     {
         $data = JadwalIbadah::findOrFail($id);
-        return view('halaman.jadwal-ibadah.edit', compact('data'));
+        $rumahKeluarga = Jemaat::select('nama_keluarga', 'alamat')
+            ->orderBy('nama_keluarga')
+            ->get();
+        return view('halaman.jadwal-ibadah.edit', compact('data', 'rumahKeluarga'));
     }
 
     public function update(Request $request, $id)
@@ -58,7 +70,9 @@ class JadwalIbadahController extends Controller
             'jenis_ibadah' => 'required|string|max:30',
             'hari' => 'required|string|max:10|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
             'tanggal' => 'required|date',
-            'jam' => 'required',
+            'jam' => ['required', 'regex:/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/'],
+            'tempat' => 'required|string|max:255',
+            'alamat' => 'nullable|string|max:500',
         ], [
             'jenis_ibadah.required' => 'Jenis ibadah harus diisi.',
             'jenis_ibadah.string' => 'Jenis ibadah harus berupa teks.',
@@ -68,6 +82,10 @@ class JadwalIbadahController extends Controller
             'tanggal.required' => 'Tanggal ibadah harus diisi.',
             'tanggal.date' => 'Tanggal ibadah harus berupa tanggal yang valid.',
             'jam.required' => 'Jam ibadah harus diisi.',
+            'jam.regex' => 'Jam ibadah harus dalam format HH:MM (contoh: 09:30).',
+            'tempat.required' => 'Tempat ibadah harus diisi.',
+            'tempat.max' => 'Tempat ibadah maksimal 255 karakter.',
+            'alamat.max' => 'Alamat maksimal 500 karakter.',
         ]);
 
         try {

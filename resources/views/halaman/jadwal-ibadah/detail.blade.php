@@ -31,11 +31,19 @@
                 </div>
                 <div class="form-group">
                     <label for="tanggal" class="form-control-label">Date</label>
-                    <input readonly class="form-control" type="date" name="tanggal" id="tanggal" value="{{ old('tanggal', $data->tanggal) }}">
+                    <input readonly class="form-control" type="date" name="tanggal" id="tanggal" value="{{ old('tanggal', $data->tanggal ? $data->tanggal->format('Y-m-d') : '') }}">
                 </div>
                 <div class="form-group">
                     <label for="jam" class="form-control-label">Jam</label>
                     <input readonly class="form-control" type="time" value="{{ old('jam', $data->jam) }}" id="jam" name="jam">
+                </div>
+                <div class="form-group">
+                    <label for="tempat" class="form-control-label">Tempat</label>
+                    <input readonly class="form-control" type="text" value="{{ $data->tempat ?? 'Tidak diisi' }}" id="tempat" name="tempat">
+                </div>
+                <div class="form-group">
+                    <label for="alamat" class="form-control-label">Alamat Lengkap</label>
+                    <textarea readonly class="form-control" name="alamat" id="alamat" rows="3">{{ $data->alamat ?? 'Tidak diisi' }}</textarea>
                 </div>
             </div>
         </div>

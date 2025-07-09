@@ -45,15 +45,36 @@
                     </div>
                     <div class="form-group">
                         <label for="tanggal" class="form-control-label">Date</label>
-                        <input class="form-control" type="date" name="tanggal" id="tanggal" value="{{ old('tanggal', $data->tanggal) }}">
+                        <input class="form-control" type="date" name="tanggal" id="tanggal" value="{{ old('tanggal', $data->tanggal ? $data->tanggal->format('Y-m-d') : '') }}">
                         @error('tanggal')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="jam" class="form-control-label">Jam</label>
-                        <input class="form-control" type="time" value="{{ old('jam', $data->jam) }}" id="jam" name="jam">
+                        <input class="form-control" type="time" value="{{ old('jam', \Carbon\Carbon::parse($data->jam)->format('H:i')) }}" id="jam" name="jam">
                         @error('jam')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tempat" class="form-control-label">Tempat</label>
+                        <select name="tempat" id="tempat" class="form-control">
+                            <option value="gereja" {{ old('tempat', $data->tempat) == 'gereja' ? 'selected' : '' }}>Gedung Gereja</option>
+                            @foreach ($rumahKeluarga as $rumah)
+                                <option value="{{ $rumah->nama_keluarga }}" {{ old('tempat', $data->tempat) == $rumah->nama_keluarga ? 'selected' : '' }}>
+                                    {{ $rumah->nama_keluarga }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('tempat')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat" class="form-control-label">Alamat Lengkap</label>
+                        <textarea class="form-control" name="alamat" id="alamat" rows="3" placeholder="Masukkan alamat lengkap ibadah (opsional)">{{ old('alamat', $data->alamat) }}</textarea>
+                        @error('alamat')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>

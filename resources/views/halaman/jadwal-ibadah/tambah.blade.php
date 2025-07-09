@@ -9,7 +9,7 @@
     <div class="col-12">
         <div class="card mb-4 px-3">
             <div class="card-header pb-0">
-                <h4 class="text-center">Tambah Data Jadwal Admin</h4>
+                <h4 class="text-center">Tambah Data Jadwal Ibadah</h4>
                 @if (session('error'))
                     <div class="alert alert-warning text-white" role="alert">
                         <strong>Peringatan!</strong> {{ session('error') }}
@@ -54,6 +54,27 @@
                         <label for="jam" class="form-control-label">Jam</label>
                         <input class="form-control" type="time" value="{{ old('jam') }}" id="jam" name="jam">
                         @error('jam')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tempat" class="form-control-label">Tempat</label>
+                        <select name="tempat" id="tempat" class="form-control">
+                            <option value="gereja">Gedung Gereja</option>
+                            @foreach ($rumahKeluarga as $rumah)
+                                <option value="{{ $rumah->nama_keluarga }}" {{ old('tempat') == $rumah->nama_keluarga ? 'selected' : '' }}>
+                                    {{ $rumah->nama_keluarga }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('tempat')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat" class="form-control-label">Alamat Lengkap</label>
+                        <textarea class="form-control" name="alamat" id="alamat" rows="3" placeholder="Masukkan alamat lengkap ibadah (opsional)">{{ old('alamat') }}</textarea>
+                        @error('alamat')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>

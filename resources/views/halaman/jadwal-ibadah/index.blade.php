@@ -32,6 +32,7 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jam</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tempat</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-25">Aksi</th>
                             </tr>
                         </thead>
@@ -41,8 +42,14 @@
                                 <td class="align-middle text-left text-sm">{{ $loop->iteration }}</td>
                                 <td class="align-middle text-left text-sm">{{ $item->jenis_ibadah }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->hari }}</td>
-                                <td class="align-middle text-center text-sm">{{ $item->tanggal }}</td>
+                                <td class="align-middle text-center text-sm">{{ \Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->jam }}</td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="badge bg-info">{{ $item->tempat ?? 'Tidak diisi' }}</span>
+                                    @if($item->alamat)
+                                        <br><small class="text-muted">{{ Str::limit($item->alamat, 30) }}</small>
+                                    @endif
+                                </td>
                                 <td class="align-middle text-center w-25">
                                     <a href="{{ route('jadwal-ibadah.edit', $item->id) }}" class="btn btn-sm btn-secondary"
                                         data-toggle="tooltip" data-original-title="Edit user">

@@ -12,7 +12,19 @@ class JadwalIbadah extends Model
         'hari',
         'tanggal',
         'jam',
+        'tempat',
+        'alamat',
     ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    // Accessor untuk format jam
+    public function getJamAttribute($value)
+    {
+        return $value ? \Carbon\Carbon::parse($value)->format('H:i') : $value;
+    }
 
     public function pendaftarIbadah()
     {
