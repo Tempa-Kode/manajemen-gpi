@@ -11,6 +11,8 @@ Route::get('/jadwal-pelayanan', [HomeController::class, 'jadwalPelayanan'])->nam
 Route::get('/pendaftaran-ibadah', [HomeController::class, 'pendaftaranIbadah'])->name('pendaftaranIbadah');
 Route::post('/pendaftaran-ibadah', [HomeController::class, 'storePendaftaranIbadah'])->name('pendaftaranIbadah.store');
 Route::delete('/pendaftaran-ibadah/{id}', [HomeController::class, 'cancelPendaftaranIbadah'])->name('pendaftaranIbadah.cancel');
+Route::get('/wartagereja', [HomeController::class, 'wartaGereja'])->name('wartaGerejaLanding');
+Route::get('/wartagereja/{id}', [HomeController::class, 'detailWartaGereja'])->name('detailWartaGereja');
 
 Route::get('login', [AutentikasiController::class, 'login'])->name('login');
 Route::post('login', [AutentikasiController::class, 'prosesLogin'])->name('prosesLogin');

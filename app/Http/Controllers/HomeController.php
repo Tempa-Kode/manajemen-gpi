@@ -6,6 +6,7 @@ use App\Models\JenisIbadah;
 use App\Models\JadwalIbadah;
 use App\Models\PendaftaranIbadah;
 use App\Models\User;
+use App\Models\WartaGereja;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -174,5 +175,22 @@ class HomeController extends Controller
             return redirect()->back()
                 ->with('error', 'Terjadi kesalahan saat membatalkan pendaftaran: ' . $e->getMessage());
         }
+    }
+
+    public function wartaGereja()
+    {
+        // Ambil semua warta gereja, urutkan dari yang terbaru
+        $wartaGereja = WartaGereja::orderBy('tanggal', 'desc')
+            ->paginate(10);
+
+        return view('landing.warta-gereja', compact('wartaGereja'));
+    }
+
+    public function detailWartaGereja($id)
+    {
+        // Ambil detail warta gereja berdasarkan ID
+        $warta = WartaGereja::findOrFail($id);
+
+        return view('landing.detail-warta-gereja', compact('warta'));
     }
 }

@@ -13,6 +13,7 @@
             <li><a href="{{ route('strukturGereja') }}" class="{{ Route::currentRouteName() == 'strukturGereja' ? 'active' : '' }}">Struktur Gereja</a></li>
             <li><a href="{{ route('jadwalPelayanan') }}" class="{{ Route::currentRouteName() == 'jadwalPelayanan' ? 'active' : '' }}">Jadwal Pelayanan</a></li>
             <li><a href="{{ route('pendaftaranIbadah') }}" class="{{ Route::currentRouteName() == 'pendaftaranIbadah' ? 'active' : '' }}">Pendaftaran Ibadah</a></li>
+            <li><a href="{{ route('wartaGerejaLanding') }}" class="{{ Route::currentRouteName() == 'wartaGerejaLanding' ? 'active' : '' }}">Warta Gereja</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
