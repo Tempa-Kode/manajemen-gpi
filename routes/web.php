@@ -35,3 +35,20 @@ Route::resource('jadwal-ibadah', App\Http\Controllers\JadwalIbadahController::cl
 Route::resource('warta-gereja', App\Http\Controllers\WartaGerejaController::class)
     ->middleware(['auth', 'admin'])
     ->names('warta-gereja');
+
+Route::resource('data-jemaat', App\Http\Controllers\DataJemaatController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('data-jemaat');
+
+Route::resource('sekolah-minggu', App\Http\Controllers\SekolahMingguController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('sekolah-minggu');
+
+Route::resource('remaja', App\Http\Controllers\RemajaController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('remaja');
+
+// Route untuk print data jemaat
+Route::get('data-jemaat/{id}/print', [App\Http\Controllers\DataJemaatController::class, 'print'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.print');
