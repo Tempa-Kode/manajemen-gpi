@@ -6,6 +6,7 @@ use App\Models\JadwalIbadah;
 use App\Models\JenisIbadah;
 use App\Models\Jemaat;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class JadwalIbadahController extends Controller
 {
@@ -100,7 +101,7 @@ class JadwalIbadahController extends Controller
 
     public function show($id)
     {
-        $data = JadwalIbadah::with(['pendaftarIbadah.user', 'jenisIbadah'])->findOrFail($id);
+        $data = JadwalIbadah::with(['pendaftarIbadah', 'jenisIbadah'])->findOrFail($id);
         return view('halaman.jadwal-ibadah.detail', compact('data'));
     }
 
@@ -113,5 +114,16 @@ class JadwalIbadahController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menghapus jadwal ibadah: ' . $e->getMessage()]);
         }
+    }
+
+    public function downloadPendaftarPDF($id)
+    {
+        $jadwalIbadah = JadwalIbadah::with(['jenisIbadah', 'pendaftarIbadah.user'])->findOrFail($id);
+
+        $pdf = Pdf::loadView('halaman.jadwal-ibadah.download-pendaftar-pdf', compact('jadwalIbadah'));
+
+        $filename = 'pendaftar-' . $jadwalIbadah->jenisIbadah->jenis_ibadah . '-' . date('d-m-Y', strtotime($jadwalIbadah->tanggal)) . '.pdf';
+
+        return $pdf->download($filename);
     }
 }

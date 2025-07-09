@@ -50,7 +50,19 @@
 
         <div class="card mb-4 px-3">
             <div class="card-header pb-0">
-                <h4 class="text-center">Pendaftar Ibadah</h4>
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4>Pendaftar Ibadah</h4>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        @if($data->pendaftarIbadah->count() > 0)
+                            <a href="{{ route('jadwal-ibadah.download-pendaftar', $data->id) }}"
+                               class="btn btn-danger btn-sm" target="_blank">
+                                <i class="fas fa-file-pdf"></i> Download PDF Pendaftar
+                            </a>
+                        @endif
+                    </div>
+                </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
@@ -62,6 +74,8 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Telp</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Daftar</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,6 +86,8 @@
                                     <td class="align-middle text-center text-sm">{{ $item->user->username }}</td>
                                     <td class="align-middle text-center text-sm">{{ $item->user->no_telp }}</td>
                                     <td class="align-middle text-center text-sm">{{ $item->user->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
+                                    <td class="align-middle text-center text-sm">{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d/m/Y') }}</td>
+                                    <td class="align-middle text-center text-sm">{{ $item->keterangan ?? '-' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

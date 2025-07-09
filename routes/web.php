@@ -37,6 +37,11 @@ Route::resource('jadwal-ibadah', App\Http\Controllers\JadwalIbadahController::cl
     ->middleware(['auth', 'admin'])
     ->names('jadwal-ibadah');
 
+// Route untuk download PDF pendaftar per jadwal ibadah
+Route::get('jadwal-ibadah/{id}/download-pendaftar', [App\Http\Controllers\JadwalIbadahController::class, 'downloadPendaftarPDF'])
+    ->middleware(['auth', 'admin'])
+    ->name('jadwal-ibadah.download-pendaftar');
+
 Route::resource('jenis-ibadah', App\Http\Controllers\JenisIbadahController::class)
     ->middleware(['auth', 'admin'])
     ->names('jenis-ibadah');
