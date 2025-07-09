@@ -40,7 +40,7 @@
                             @foreach ($data as $item)
                             <tr>
                                 <td class="align-middle text-left text-sm">{{ $loop->iteration }}</td>
-                                <td class="align-middle text-left text-sm">{{ $item->jenis_ibadah }}</td>
+                                <td class="align-middle text-left text-sm">{{ $item->jenisIbadah->jenis_ibadah ?? 'Tidak ada jenis' }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->hari }}</td>
                                 <td class="align-middle text-center text-sm">{{ \Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->jam }}</td>

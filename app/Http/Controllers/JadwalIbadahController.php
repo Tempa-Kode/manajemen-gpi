@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalIbadah;
+use App\Models\JenisIbadah;
 use App\Models\Jemaat;
 use Illuminate\Http\Request;
 
@@ -10,32 +11,32 @@ class JadwalIbadahController extends Controller
 {
     public function index()
     {
-        $data = JadwalIbadah::all()->sortBy('tanggal', SORT_REGULAR, true)
+        $data = JadwalIbadah::with('jenisIbadah')->get()->sortBy('tanggal', SORT_REGULAR, true)
             ->sortBy('jam', SORT_REGULAR, true);
         return view('halaman.jadwal-ibadah.index', compact('data'));
     }
 
     public function create()
     {
+        $jenisIbadah = JenisIbadah::orderBy('jenis_ibadah')->get();
         $rumahKeluarga = Jemaat::select('nama_keluarga', 'alamat')
             ->orderBy('nama_keluarga')
             ->get();
-        return view('halaman.jadwal-ibadah.tambah', compact('rumahKeluarga'));
+        return view('halaman.jadwal-ibadah.tambah', compact('rumahKeluarga', 'jenisIbadah'));
     }
 
     public function store(Request $request)
     {
         $validasi = $request->validate([
-            'jenis_ibadah' => 'required|string|max:30',
+            'jenis_ibadah_id' => 'required|exists:jenis_ibadah,id',
             'hari' => 'required|string|max:10|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
             'tanggal' => 'required|date',
             'jam' => ['required', 'regex:/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/'],
             'tempat' => 'required|string|max:255',
             'alamat' => 'nullable|string|max:500',
         ], [
-            'jenis_ibadah.required' => 'Jenis ibadah harus diisi.',
-            'jenis_ibadah.string' => 'Jenis ibadah harus berupa teks.',
-            'jenis_ibadah.max' => 'Jenis ibadah maksimal 30 karakter.',
+            'jenis_ibadah_id.required' => 'Jenis ibadah harus dipilih.',
+            'jenis_ibadah_id.exists' => 'Jenis ibadah yang dipilih tidak valid.',
             'hari.required' => 'Hari ibadah harus diisi.',
             'hari.in' => 'Hari ibadah harus salah satu dari: Senin, Selasa, Rabu, Kamis, Jumat, Sabtu, atau Minggu.',
             'tanggal.required' => 'Tanggal ibadah harus diisi.',
@@ -58,25 +59,25 @@ class JadwalIbadahController extends Controller
     public function edit($id)
     {
         $data = JadwalIbadah::findOrFail($id);
+        $jenisIbadah = JenisIbadah::orderBy('jenis_ibadah')->get();
         $rumahKeluarga = Jemaat::select('nama_keluarga', 'alamat')
             ->orderBy('nama_keluarga')
             ->get();
-        return view('halaman.jadwal-ibadah.edit', compact('data', 'rumahKeluarga'));
+        return view('halaman.jadwal-ibadah.edit', compact('data', 'rumahKeluarga', 'jenisIbadah'));
     }
 
     public function update(Request $request, $id)
     {
         $validasi = $request->validate([
-            'jenis_ibadah' => 'required|string|max:30',
+            'jenis_ibadah_id' => 'required|exists:jenis_ibadah,id',
             'hari' => 'required|string|max:10|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
             'tanggal' => 'required|date',
             'jam' => ['required', 'regex:/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/'],
             'tempat' => 'required|string|max:255',
             'alamat' => 'nullable|string|max:500',
         ], [
-            'jenis_ibadah.required' => 'Jenis ibadah harus diisi.',
-            'jenis_ibadah.string' => 'Jenis ibadah harus berupa teks.',
-            'jenis_ibadah.max' => 'Jenis ibadah maksimal 30 karakter.',
+            'jenis_ibadah_id.required' => 'Jenis ibadah harus dipilih.',
+            'jenis_ibadah_id.exists' => 'Jenis ibadah yang dipilih tidak valid.',
             'hari.required' => 'Hari ibadah harus diisi.',
             'hari.in' => 'Hari ibadah harus salah satu dari: Senin, Selasa, Rabu, Kamis, Jumat, Sabtu, atau Minggu.',
             'tanggal.required' => 'Tanggal ibadah harus diisi.',
@@ -99,7 +100,7 @@ class JadwalIbadahController extends Controller
 
     public function show($id)
     {
-        $data = JadwalIbadah::with(['pendaftarIbadah.user'])->findOrFail($id);
+        $data = JadwalIbadah::with(['pendaftarIbadah.user', 'jenisIbadah'])->findOrFail($id);
         return view('halaman.jadwal-ibadah.detail', compact('data'));
     }
 

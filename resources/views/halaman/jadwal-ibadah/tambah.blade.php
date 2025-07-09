@@ -21,9 +21,16 @@
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="jenis_ibadah" class="form-control-label">Jenis Ibadah</label>
-                        <input class="form-control" type="text" name="jenis_ibadah" id="jenis_ibadah" value="{{ old('jenis_ibadah') }}">
-                        @error('jenis_ibadah')
+                        <label for="jenis_ibadah_id" class="form-control-label">Jenis Ibadah</label>
+                        <select name="jenis_ibadah_id" id="jenis_ibadah_id" class="form-control">
+                            <option value="" disabled selected>Pilih Jenis Ibadah</option>
+                            @foreach ($jenisIbadah as $jenis)
+                                <option value="{{ $jenis->id }}" {{ old('jenis_ibadah_id') == $jenis->id ? 'selected' : '' }}>
+                                    {{ $jenis->jenis_ibadah }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('jenis_ibadah_id')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>

@@ -14,7 +14,7 @@
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="form-group">
                     <label for="jenis_ibadah" class="form-control-label">Jenis Ibadah</label>
-                    <input readonly class="form-control" type="text" name="jenis_ibadah" id="jenis_ibadah" value="{{ old('jenis_ibadah', $data->jenis_ibadah) }}">
+                    <input readonly class="form-control" type="text" name="jenis_ibadah" id="jenis_ibadah" value="{{ $data->jenisIbadah->jenis_ibadah ?? 'Tidak ada jenis' }}">
                 </div>
                 <div class="form-group">
                     <label for="hari" class="form-control-label">Hari</label>

@@ -4,7 +4,7 @@ use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class, 'index')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('login', [AutentikasiController::class, 'login'])->name('login');
 Route::post('login', [AutentikasiController::class, 'prosesLogin'])->name('prosesLogin');
@@ -30,6 +30,10 @@ Route::resource('jemaat', App\Http\Controllers\JemaatController::class)
 Route::resource('jadwal-ibadah', App\Http\Controllers\JadwalIbadahController::class)
     ->middleware(['auth', 'admin'])
     ->names('jadwal-ibadah');
+
+Route::resource('jenis-ibadah', App\Http\Controllers\JenisIbadahController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('jenis-ibadah');
 
 Route::resource('warta-gereja', App\Http\Controllers\WartaGerejaController::class)
     ->middleware(['auth', 'admin'])
