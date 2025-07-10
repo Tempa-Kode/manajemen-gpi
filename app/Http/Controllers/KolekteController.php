@@ -11,13 +11,13 @@ class KolekteController extends Controller
     public function index()
     {
         $kolektes = Kolekte::with('jadwalIbadah')->latest()->paginate(10);
-        return view('kolekte.index', compact('kolektes'));
+        return view('halaman.kolekte.index', compact('kolektes'));
     }
 
     public function create()
     {
         $jadwalIbadahs = JadwalIbadah::with('jenisIbadah')->get();
-        return view('kolekte.create', compact('jadwalIbadahs'));
+        return view('halaman.kolekte.create', compact('jadwalIbadahs'));
     }
 
     public function store(Request $request)
@@ -33,19 +33,19 @@ class KolekteController extends Controller
 
         Kolekte::create($request->all());
 
-        return redirect()->route('kolekte.index')
+        return redirect()->route('halaman.kolekte.index')
             ->with('success', 'Data kolekte berhasil ditambahkan.');
     }
 
     public function show(Kolekte $kolekte)
     {
-        return view('kolekte.show', compact('kolekte'));
+        return view('halaman.kolekte.show', compact('kolekte'));
     }
 
     public function edit(Kolekte $kolekte)
     {
         $jadwalIbadahs = JadwalIbadah::with('jenisIbadah')->get();
-        return view('kolekte.edit', compact('kolekte', 'jadwalIbadahs'));
+        return view('halaman.kolekte.edit', compact('kolekte', 'jadwalIbadahs'));
     }
 
     public function update(Request $request, Kolekte $kolekte)
@@ -61,7 +61,7 @@ class KolekteController extends Controller
 
         $kolekte->update($request->all());
 
-        return redirect()->route('kolekte.index')
+        return redirect()->route('halaman.kolekte.index')
             ->with('success', 'Data kolekte berhasil diperbarui.');
     }
 
@@ -69,7 +69,7 @@ class KolekteController extends Controller
     {
         $kolekte->delete();
 
-        return redirect()->route('kolekte.index')
+        return redirect()->route('halaman.kolekte.index')
             ->with('success', 'Data kolekte berhasil dihapus.');
     }
 }
