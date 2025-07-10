@@ -64,6 +64,10 @@ Route::resource('remaja', App\Http\Controllers\RemajaController::class)
     ->middleware(['auth', 'admin'])
     ->names('remaja');
 
+Route::resource('kolekte', App\Http\Controllers\KolekteController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('kolekte');
+
 // Route untuk print data jemaat
 Route::get('data-jemaat/{id}/print', [App\Http\Controllers\DataJemaatController::class, 'print'])
     ->middleware(['auth', 'admin'])
