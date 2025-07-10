@@ -120,7 +120,7 @@
             <tr>
                 <td style="text-align: center;">{{ $index + 1 }}</td>
                 <td style="text-align: center;">{{ $kolekte->tanggal_ibadah ? $kolekte->tanggal_ibadah->format('d/m/Y') : '-' }}</td>
-                <td>{{ $kolekte->jadwalIbadah->jenisIbadah->nama_jenis_ibadah ?? 'Umum' }}</td>
+                <td>{{ $kolekte->jadwalIbadah->jenisIbadah->jenis_ibadah ?? 'Umum' }}</td>
                 <td class="number">Rp {{ number_format($kolekte->pembangunan_gereja, 0, ',', '.') }}</td>
                 <td class="number">Rp {{ number_format($kolekte->persembahan_pelayanan_pengerja, 0, ',', '.') }}</td>
                 <td class="number">Rp {{ number_format($kolekte->persembahan_pelayanan_sosial_gereja, 0, ',', '.') }}</td>
