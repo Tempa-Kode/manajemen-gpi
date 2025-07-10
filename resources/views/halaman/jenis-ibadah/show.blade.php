@@ -33,7 +33,7 @@
                                         <tr>
                                             <td class="text-sm font-weight-bold">Jumlah Jadwal:</td>
                                             <td class="text-sm">
-                                                <span class="badge badge-success">{{ $jenisIbadah->jadwalIbadah->count() }} Jadwal</span>
+                                                <span class="badge bg-success">{{ $jenisIbadah->jadwalIbadah->count() }} Jadwal</span>
                                             </td>
                                         </tr>
                                         <tr>
