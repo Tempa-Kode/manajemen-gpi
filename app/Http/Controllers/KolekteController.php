@@ -33,14 +33,14 @@ class KolekteController extends Controller
 
         Kolekte::create($request->all());
 
-        return redirect()->route('halaman.kolekte.index')
+        return redirect()->route('kolekte.index')
             ->with('success', 'Data kolekte berhasil ditambahkan.');
     }
 
     public function show(Kolekte $kolekte)
     {
-        $kolekte->with('jadwalIbadah');
-        // dd($kolekte);
+        $kolekte->load('jadwalIbadah');
+        // dd($kolekte); // Uncomment this line to debug and see the kolekte data
         return view('halaman.kolekte.show', compact('kolekte'));
     }
 
@@ -63,7 +63,7 @@ class KolekteController extends Controller
 
         $kolekte->update($request->all());
 
-        return redirect()->route('halaman.kolekte.index')
+        return redirect()->route('kolekte.index')
             ->with('success', 'Data kolekte berhasil diperbarui.');
     }
 
@@ -71,7 +71,7 @@ class KolekteController extends Controller
     {
         $kolekte->delete();
 
-        return redirect()->route('halaman.kolekte.index')
+        return redirect()->route('kolekte.index')
             ->with('success', 'Data kolekte berhasil dihapus.');
     }
 
