@@ -64,6 +64,11 @@ Route::resource('remaja', App\Http\Controllers\RemajaController::class)
     ->middleware(['auth', 'admin'])
     ->names('remaja');
 
+// Route untuk download report PDF kolekte
+Route::get('kolekte/download-report', [App\Http\Controllers\KolekteController::class, 'downloadReport'])
+    ->middleware(['auth', 'admin'])
+    ->name('kolekte.download-report');
+
 Route::resource('kolekte', App\Http\Controllers\KolekteController::class)
     ->middleware(['auth', 'admin'])
     ->names('kolekte');
