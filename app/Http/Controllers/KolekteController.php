@@ -10,7 +10,7 @@ class KolekteController extends Controller
 {
     public function index()
     {
-        $kolektes = Kolekte::with('jadwalIbadah')->latest()->paginate(10);
+        $kolektes = Kolekte::with('jadwalIbadah')->latest()->get();
         return view('halaman.kolekte.index', compact('kolektes'));
     }
 
