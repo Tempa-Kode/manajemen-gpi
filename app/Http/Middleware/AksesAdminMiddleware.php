@@ -15,7 +15,7 @@ class AksesAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && $request->user()->hak_akses_id === 1) {
+        if ($request->user() && $request->user()->hak_akses_id == 1) {
             return $next($request);
         }
 
