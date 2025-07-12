@@ -267,7 +267,7 @@
                                         </div>
                                         <div>
                                             <h6 class="mb-0"><a href="{{ route('sekolah-minggu.show', $sm->id) }}">{{ $sm->nama }}</a></h6>
-                                            <small class="text-muted">{{ $sm->umur }} tahun | {{ $sm->kelas ?? 'Belum ada kelas' }}</small>
+                                            <small class="text-muted">{{ $sm->kelas ?? 'Belum ada kelas' }}</small>
                                         </div>
                                     </div>
                                     <a href="{{ route('sekolah-minggu.show', $sm->id) }}" class="badge bg-primary">

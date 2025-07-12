@@ -34,22 +34,16 @@ class SekolahMingguController extends Controller
         $validasi = $request->validate([
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
-            'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'kelas' => 'nullable|string|max:50',
-            'status' => 'required|in:aktif,tidak_aktif',
         ], [
             'id_kk.required' => 'Keluarga harus dipilih.',
             'id_kk.exists' => 'Keluarga tidak ditemukan.',
             'nama.required' => 'Nama anak harus diisi.',
             'nama.max' => 'Nama anak maksimal 255 karakter.',
-            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
-            'tanggal_lahir.date' => 'Format tanggal lahir tidak valid.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
             'kelas.max' => 'Kelas maksimal 50 karakter.',
-            'status.required' => 'Status harus dipilih.',
-            'status.in' => 'Status harus aktif atau tidak_aktif.',
         ]);
 
         try {
@@ -86,22 +80,16 @@ class SekolahMingguController extends Controller
         $validasi = $request->validate([
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
-            'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'kelas' => 'nullable|string|max:50',
-            'status' => 'required|in:aktif,tidak_aktif',
         ], [
             'id_kk.required' => 'Keluarga harus dipilih.',
             'id_kk.exists' => 'Keluarga tidak ditemukan.',
             'nama.required' => 'Nama anak harus diisi.',
             'nama.max' => 'Nama anak maksimal 255 karakter.',
-            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
-            'tanggal_lahir.date' => 'Format tanggal lahir tidak valid.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
             'kelas.max' => 'Kelas maksimal 50 karakter.',
-            'status.required' => 'Status harus dipilih.',
-            'status.in' => 'Status harus aktif atau tidak_aktif.',
         ]);
 
         try {

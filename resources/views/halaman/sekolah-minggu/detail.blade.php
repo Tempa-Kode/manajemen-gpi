@@ -39,24 +39,12 @@
                                     <td>{{ $sekolahMinggu->jemaat->nama_keluarga ?? '-' }} (ID KK: {{ $sekolahMinggu->jemaat->id_kk ?? '-' }})</td>
                                 </tr>
                                 <tr>
-                                    <th>Tanggal Lahir</th>
-                                    <td>{{ $sekolahMinggu->tanggal_lahir->format('d F Y') }}</td>
-                                </tr>
-                                <tr>
                                     <th>Jenis Kelamin</th>
                                     <td>{{ $sekolahMinggu->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Kelas</th>
                                     <td>{{ $sekolahMinggu->kelas ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <td>
-                                        <span class="badge bg-{{ $sekolahMinggu->status == 'aktif' ? 'success' : 'secondary' }}">
-                                            {{ $sekolahMinggu->status == 'aktif' ? 'Aktif' : 'Tidak Aktif' }}
-                                        </span>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Terdaftar Sejak</th>
