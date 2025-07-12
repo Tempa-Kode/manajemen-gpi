@@ -12,7 +12,7 @@ class DataJemaatController extends Controller
      */
     public function index()
     {
-        $data = \App\Models\Jemaat::all()->sortByDesc('created_at');
+        $data = \App\Models\Jemaat::all()->sortBy('id_kk');
         return view('halaman.data-jemaat.index', compact('data'));
     }
 

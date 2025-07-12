@@ -107,26 +107,8 @@
                                 </div>
                             </div>
 
-                            <!-- Tanggal Lahir -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tanggal_lahir" class="form-label text-dark fw-bold">
-                                        <i class="fas fa-calendar text-success me-2"></i>Tanggal Lahir
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="date"
-                                           class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                           id="tanggal_lahir" name="tanggal_lahir"
-                                           value="{{ old('tanggal_lahir', $remaja->tanggal_lahir ? $remaja->tanggal_lahir->format('Y-m-d') : '') }}"
-                                           required>
-                                    @error('tanggal_lahir')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <!-- Jenis Kelamin -->
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label text-dark fw-bold">
                                         <i class="fas fa-venus-mars text-success me-2"></i>Jenis Kelamin
@@ -185,29 +167,6 @@
                                            value="{{ old('pekerjaan', $remaja->pekerjaan) }}"
                                            placeholder="Contoh: Mahasiswa, Part-time, dll">
                                     @error('pekerjaan')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Status -->
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="status" class="form-label text-dark fw-bold">
-                                        <i class="fas fa-toggle-on text-success me-2"></i>Status
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <select class="form-select @error('status') is-invalid @enderror"
-                                            id="status" name="status" required>
-                                        <option value="">Pilih Status</option>
-                                        <option value="aktif" {{ old('status', $remaja->status) == 'aktif' ? 'selected' : '' }}>
-                                            Aktif
-                                        </option>
-                                        <option value="tidak_aktif" {{ old('status', $remaja->status) == 'tidak_aktif' ? 'selected' : '' }}>
-                                            Tidak Aktif
-                                        </option>
-                                    </select>
-                                    @error('status')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

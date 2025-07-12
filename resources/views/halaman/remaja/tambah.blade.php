@@ -88,25 +88,6 @@
                                 </div>
                             </div>
 
-                            <!-- Tanggal Lahir -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tanggal_lahir" class="form-label fw-bold">
-                                        <i class="fas fa-calendar text-success me-2"></i>Tanggal Lahir
-                                    </label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-birthday-cake"></i>
-                                        </span>
-                                        <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                               value="{{ old('tanggal_lahir') }}" required>
-                                    </div>
-                                    @error('tanggal_lahir')
-                                        <span class="text-danger fst-italic">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <!-- Jenis Kelamin -->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -167,26 +148,6 @@
                                 </div>
                             </div>
 
-                            <!-- Status -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="status" class="form-label fw-bold">
-                                        <i class="fas fa-toggle-on text-success me-2"></i>Status
-                                    </label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-check-circle"></i>
-                                        </span>
-                                        <select class="form-control" name="status" id="status" required>
-                                            <option value="aktif" {{ old('status', 'aktif') == 'aktif' ? 'selected' : '' }}>Aktif</option>
-                                            <option value="tidak_aktif" {{ old('status') == 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-                                        </select>
-                                    </div>
-                                    @error('status')
-                                        <span class="text-danger fst-italic">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
                         </div>
 
                         <div class="d-flex gap-3 mt-4">

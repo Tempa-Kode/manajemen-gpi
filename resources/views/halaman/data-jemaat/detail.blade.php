@@ -320,7 +320,6 @@
                                         </div>
                                         <div>
                                             <h6 class="mb-0"><a href="{{ route('remaja.show', $remaja->id) }}">{{ $remaja->nama }}</a></h6>
-                                            <small class="text-muted">{{ $remaja->umur }} tahun | {{ $remaja->pendidikan ?? 'Belum diisi' }}</small>
                                         </div>
                                     </div>
                                     <a href="{{ route('remaja.show', $remaja->id) }}" class="badge bg-success">

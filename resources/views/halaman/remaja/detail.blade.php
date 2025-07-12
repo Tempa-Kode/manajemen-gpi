@@ -39,10 +39,6 @@
                                     <td>{{ $remaja->jemaat->nama_keluarga ?? '-' }} (ID KK: {{ $remaja->jemaat->id_kk ?? '-' }})</td>
                                 </tr>
                                 <tr>
-                                    <th>Tanggal Lahir</th>
-                                    <td>{{ $remaja->tanggal_lahir->format('d F Y') }}</td>
-                                </tr>
-                                <tr>
                                     <th>Jenis Kelamin</th>
                                     <td>{{ $remaja->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                                 </tr>
@@ -53,14 +49,6 @@
                                 <tr>
                                     <th>Pekerjaan</th>
                                     <td>{{ $remaja->pekerjaan ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <td>
-                                        <span class="badge bg-{{ $remaja->status == 'aktif' ? 'success' : 'secondary' }}">
-                                            {{ $remaja->status == 'aktif' ? 'Aktif' : 'Tidak Aktif' }}
-                                        </span>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Terdaftar Sejak</th>
