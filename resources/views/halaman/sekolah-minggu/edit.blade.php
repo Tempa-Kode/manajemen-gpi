@@ -225,14 +225,6 @@
                             <i class="fas fa-check text-success me-2"></i>
                             <small>Pastikan data keluarga sudah benar</small>
                         </li>
-                        <li class="mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            <small>Tanggal lahir akan otomatis menghitung umur</small>
-                        </li>
-                        <li class="mb-0">
-                            <i class="fas fa-check text-success me-2"></i>
-                            <small>Status aktif untuk anak yang masih mengikuti sekolah minggu</small>
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -246,14 +246,6 @@
                             <i class="fas fa-check text-success me-2"></i>
                             <small>Tanggal lahir akan otomatis menghitung umur</small>
                         </li>
-                        <li class="mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            <small>Pendidikan dan pekerjaan bersifat opsional</small>
-                        </li>
-                        <li class="mb-0">
-                            <i class="fas fa-check text-success me-2"></i>
-                            <small>Status aktif untuk remaja yang masih aktif mengikuti kegiatan</small>
-                        </li>
                     </ul>
                 </div>
             </div>

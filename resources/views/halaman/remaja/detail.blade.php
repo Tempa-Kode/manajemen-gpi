@@ -30,7 +30,7 @@
                                 @endif
                             </div>
                             <h3 class="mb-0">{{ $remaja->nama }}</h3>
-                            <span class="badge bg-info">{{ $remaja->umur }} tahun</span>
+                            <span class="badge bg-info">Remaja</span>
                         </div>
                         <div class="col-12">
                             <table class="table table-borderless mb-0">

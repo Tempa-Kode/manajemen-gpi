@@ -136,10 +136,6 @@
                                 <i class="fas fa-save me-2"></i>
                                 Simpan Data
                             </button>
-                            <a href="{{ route('sekolah-minggu.index') }}" class="btn btn-secondary">
-                                <i class="fas fa-times me-2"></i>
-                                Batal
-                            </a>
                         </div>
                     </form>
                 </div>
