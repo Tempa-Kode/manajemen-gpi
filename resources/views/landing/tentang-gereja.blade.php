@@ -256,7 +256,7 @@
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href="https://www.instagram.com/youth_gpi_prwg?igsh=c3owNHRnNGhyMjV4"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
