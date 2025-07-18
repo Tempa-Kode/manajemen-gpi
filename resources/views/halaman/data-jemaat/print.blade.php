@@ -252,8 +252,7 @@
                                 <div>
                                     <h6 class="member-name">{{ $sm->nama }}</h6>
                                     <p class="member-info">
-                                        {{ $sm->jenisKelaminText }} • {{ $sm->umur }} tahun •
-                                        Lahir: {{ $sm->tanggal_lahir->format('d F Y') }}
+                                        {{ $sm->jenisKelaminText }}
                                     </p>
                                 </div>
                                 <div class="ms-auto">
@@ -294,8 +293,7 @@
                                 <div>
                                     <h6 class="member-name">{{ $remaja->nama }}</h6>
                                     <p class="member-info">
-                                        {{ $remaja->jenisKelaminText }} • {{ $remaja->umur }} tahun •
-                                        Lahir: {{ $remaja->tanggal_lahir->format('d F Y') }}
+                                        {{ $remaja->jenisKelaminText }}
                                     </p>
                                 </div>
                                 <div class="ms-auto">
