@@ -9,8 +9,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang-gereja', [HomeController::class, 'tentangGereja'])->name('tentangGereja');
 Route::get('/struktur-gereja', [HomeController::class, 'strukturGereja'])->name('strukturGereja');
 Route::get('/jadwal-pelayanan', [HomeController::class, 'jadwalPelayanan'])->name('jadwalPelayanan');
-Route::get('/pendaftaran-ibadah', [HomeController::class, 'pendaftaranIbadah'])->name('pendaftaranIbadah');
-Route::post('/pendaftaran-ibadah', [HomeController::class, 'storePendaftaranIbadah'])->name('pendaftaranIbadah.store');
+Route::get('/pendaftaran-ibadah', [\App\Http\Controllers\PendaftaranIbadahController::class, 'halamanPendaftaranIbadah'])->name('pendaftaranIbadah');
+Route::post('/pendaftaran-ibadah', [\App\Http\Controllers\PendaftaranIbadahController::class, 'storePendaftaranIbadah'])->name('pendaftaranIbadah.store');
 Route::delete('/pendaftaran-ibadah/{id}', [HomeController::class, 'cancelPendaftaranIbadah'])->name('pendaftaranIbadah.cancel');
 Route::get('/wartagereja', [HomeController::class, 'wartaGereja'])->name('wartaGerejaLanding');
 Route::get('/wartagereja/{id}', [HomeController::class, 'detailWartaGereja'])->name('detailWartaGereja');
@@ -48,6 +48,12 @@ Route::resource('jadwal-ibadah', App\Http\Controllers\JadwalIbadahController::cl
 Route::get('jadwal-ibadah/{id}/download-pendaftar', [App\Http\Controllers\JadwalIbadahController::class, 'downloadPendaftarPDF'])
     ->middleware(['auth', 'admin'])
     ->name('jadwal-ibadah.download-pendaftar');
+Route::put('pendaftaran/{id}/konfirmasi', [\App\Http\Controllers\PendaftaranIbadahController::class, 'konfirmasi'])
+    ->middleware(['auth', 'admin'])
+    ->name('pendaftaran.konfirmasi');
+Route::put('pendaftaran/{id}/tolak', [\App\Http\Controllers\PendaftaranIbadahController::class, 'tolak'])
+    ->middleware(['auth', 'admin'])
+    ->name('pendaftaran.tolak');
 
 Route::resource('jenis-ibadah', App\Http\Controllers\JenisIbadahController::class)
     ->middleware(['auth', 'admin'])

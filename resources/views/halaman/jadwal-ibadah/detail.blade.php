@@ -76,6 +76,7 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Daftar</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +88,31 @@
                                     <td class="align-middle text-center text-sm">{{ $item->user->no_telp }}</td>
                                     <td class="align-middle text-center text-sm">{{ $item->user->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
                                     <td class="align-middle text-center text-sm">{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d/m/Y') }}</td>
-                                    <td class="align-middle text-center text-sm">{{ $item->keterangan ?? '-' }}</td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="badge rounded-pill text-bg-{{ $item->status == 'menunggu' ? 'warning' : ($item->status == 'konfirmasi' ? 'success' : 'danger') }} text-white">
+                                            {{ ucfirst($item->status) }}
+                                        </span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        @if($item->status == 'menunggu')
+                                            <form action="{{ route('pendaftaran.konfirmasi', $item->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success btn-sm">
+                                                    <i class="fa-solid fa-circle-check"></i>
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('pendaftaran.tolak', $item->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-ban"></i>
+                                                </button>
+                                            </form>
+                                        @else
+                                            {{ '-' }}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -311,35 +311,35 @@
 
                   @foreach($pendaftaranExisting as $pendaftaran)
                     <div class="jadwal-item">
-                      <div class="row align-items-center">
-                        <div class="col-md-2">
+                      <div class="row align-items-center g-2 flex-wrap">
+                        <div class="col-12 col-md-2">
                           <strong>{{ $pendaftaran->jadwalIbadah->jenisIbadah->jenis_ibadah }}</strong>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-6 col-md-3">
                           <i class="fas fa-calendar me-1"></i>
                           {{ \Carbon\Carbon::parse($pendaftaran->jadwalIbadah->tanggal)->translatedFormat('d M Y') }}
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-6 col-md-2">
                           <i class="fas fa-clock me-1"></i>
                           {{ \Carbon\Carbon::parse($pendaftaran->jadwalIbadah->jam)->format('H:i') }}
                         </div>
-                        <div class="col-md-2">
-                          <small class="text-muted">
+                        <div class="col-6 col-md-2">
+                          <span class="badge rounded-pill text-bg-{{ $pendaftaran->status == 'menunggu' ? 'warning' : ($pendaftaran->status == 'konfirmasi' ? 'success' : 'danger') }}">
+                            {{ ucfirst($pendaftaran->status) }}
+                          </span>
+                        </div>
+                        <div class="col-6 col-md-2">
+                          <small class="text-muted d-block">
                             {{ \Carbon\Carbon::parse($pendaftaran->created_at)->diffForHumans() }}
                           </small>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-12 col-md-1 text-end">
                           @php
                             $tanggalIbadah = \Carbon\Carbon::parse($pendaftaran->jadwalIbadah->tanggal);
                             $jamIbadah = \Carbon\Carbon::parse($pendaftaran->jadwalIbadah->jam);
-
-                            // Gabungkan tanggal dan jam ibadah
                             $waktuIbadah = $tanggalIbadah->setTimeFromTimeString($jamIbadah->format('H:i:s'));
-
-                            // Batas waktu pembatalan: 1 hari (24 jam) sebelum ibadah
                             $batasWaktu = $waktuIbadah->copy()->subHours(24);
-
-                            $masihBisaDibatalkan = \Carbon\Carbon::now()->lessThan($batasWaktu);
+                            $masihBisaDibatalkan = \Carbon\Carbon::now()->lessThan($batasWaktu) || $pendaftaran->status == 'menunggu';
                           @endphp
 
                           @if($masihBisaDibatalkan)
@@ -515,7 +515,6 @@
               <ul class="mb-0">
                 <li>Anda harus login terlebih dahulu untuk dapat mendaftar ibadah</li>
                 <li>Pendaftaran akan menggunakan nama dan email dari akun Anda</li>
-                <li>Konfirmasi pendaftaran akan dikirim melalui email atau WhatsApp</li>
                 <li><strong>Pembatalan pendaftaran dapat dilakukan maksimal 1 hari sebelum ibadah</strong></li>
                 <li>Setelah batas waktu pembatalan, pendaftaran tidak dapat dibatalkan</li>
                 <li>Untuk pertanyaan lebih lanjut, hubungi sekretariat gereja</li>
