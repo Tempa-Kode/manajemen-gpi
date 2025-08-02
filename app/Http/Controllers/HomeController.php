@@ -193,4 +193,11 @@ class HomeController extends Controller
 
         return view('landing.detail-warta-gereja', compact('warta'));
     }
+
+    public function profilJemaat()
+    {
+        $user = Auth::user()->id;
+        $jemaat = User::findOrFail($user);
+        return view('landing.profil-jemaat', compact('jemaat'));
+    }
 }

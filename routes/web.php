@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JemaatController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -13,6 +14,10 @@ Route::post('/pendaftaran-ibadah', [HomeController::class, 'storePendaftaranIbad
 Route::delete('/pendaftaran-ibadah/{id}', [HomeController::class, 'cancelPendaftaranIbadah'])->name('pendaftaranIbadah.cancel');
 Route::get('/wartagereja', [HomeController::class, 'wartaGereja'])->name('wartaGerejaLanding');
 Route::get('/wartagereja/{id}', [HomeController::class, 'detailWartaGereja'])->name('detailWartaGereja');
+Route::get('/profil', [HomeController::class, 'profilJemaat'])->middleware(['auth'])->name('profil');
+
+Route::put('/profil/update', [JemaatController::class, 'updateProfile'])->name('profil.update');
+Route::put('/profil/password', [JemaatController::class, 'updatePassword'])->name('profil.password');
 
 Route::get('login', [AutentikasiController::class, 'login'])->name('login');
 Route::post('login', [AutentikasiController::class, 'prosesLogin'])->name('prosesLogin');

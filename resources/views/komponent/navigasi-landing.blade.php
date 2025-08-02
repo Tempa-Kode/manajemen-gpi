@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('assets/img/favicon.ico') }}" alt="logo gpi" class="img-fluid">
       </a>
@@ -20,7 +20,11 @@
 
     @if(Auth::check())
         <div class="d-flex align-items-center">
-            <span class="me-3">{{ Auth::user()->name }}</span>
+            @if(Auth::user()->hakAkses->akses == 'Jemaat' || Auth::user()->hakAkses->akses == 'Tamu')
+                <a href="{{ route('profil') }}" class="me-3 text-decoration-none">👤{{ Auth::user()->name }}</a>
+            @else
+                <span class="me-3">{{ Auth::user()->name }}</span>
+            @endif
             @if(Auth::user()->id == 1)
                 <a class="btn-getstarted me-2" href="{{ route('dashboard') }}">Dashboard</a>
             @endif

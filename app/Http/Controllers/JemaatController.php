@@ -101,4 +101,54 @@ class JemaatController extends Controller
             return redirect()->back()->withErrors(['error' => 'Gagal menghapus user: ' . $e->getMessage()]);
         }
     }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'alamat' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:20',
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'alamat.required' => 'Alamat wajib diisi',
+            'no_telp.required' => 'Nomor telepon wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'no_telp.max' => 'Nomor telepon tidak boleh lebih dari 20 karakter',
+        ]);
+
+        $jemaat = auth()->user();
+        $jemaat->name = $request->name;
+        $jemaat->email = $request->email;
+        $jemaat->alamat = $request->alamat;
+        $jemaat->no_telp = $request->no_telp;
+        $jemaat->save();
+
+        return back()->with('success', 'Profil berhasil diperbarui.');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password_lama' => 'required',
+            'password_baru' => 'required|min:8|confirmed',
+        ], [
+            'password_lama.required' => 'password lama wajib diisi.',
+            'password_baru.required' => 'password baru wajib diisi.',
+            'password_baru.min' => 'password baru minimal 8 karakter.',
+            'password_baru.confirmed' => 'Konfirmasi password baru tidak cocok.',
+        ]);
+
+        $jemaat = auth()->user();
+
+        if (!\Hash::check($request->password_lama, $jemaat->password)) {
+            return back()->withErrors(['password_lama' => 'Password lama tidak cocok.']);
+        }
+
+        $jemaat->password = bcrypt($request->password_baru);
+        $jemaat->save();
+
+        return back()->with('success', 'Password berhasil diperbarui.');
+    }
 }
