@@ -14,6 +14,9 @@
             <li><a href="{{ route('jadwalPelayanan') }}" class="{{ Route::currentRouteName() == 'jadwalPelayanan' ? 'active' : '' }}">Jadwal Pelayanan</a></li>
             <li><a href="{{ route('pendaftaranIbadah') }}" class="{{ Route::currentRouteName() == 'pendaftaranIbadah' ? 'active' : '' }}">Pendaftaran Ibadah</a></li>
             <li><a href="{{ route('wartaGerejaLanding') }}" class="{{ Route::currentRouteName() == 'wartaGerejaLanding' ? 'active' : '' }}">Warta Gereja</a></li>
+            @auth
+                <li><a href="{{ route('permohonan-surat.form') }}" class="{{ Route::currentRouteName() == 'permohonan-surat.form' ? 'active' : '' }}">Permohonan Surat</a></li>
+            @endauth
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>

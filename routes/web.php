@@ -99,3 +99,13 @@ Route::resource('surat-terbit', App\Http\Controllers\SuratTerbitController::clas
 Route::get('surat-terbit/{id}/download', [App\Http\Controllers\SuratTerbitController::class, 'downloadSurat'])
     ->middleware(['auth', 'admin'])
     ->name('surat-terbit.download');
+
+Route::resource('permohonan-surat', App\Http\Controllers\PermohonanSuratController::class)
+    ->middleware(['auth'])
+    ->names('permohonan-surat');
+Route::get('permohonan/form', [App\Http\Controllers\PermohonanSuratController::class, 'formPermohonanSurat'])
+    ->middleware(['auth'])
+    ->name('permohonan-surat.form');
+Route::post('permohonan/simpan', [App\Http\Controllers\PermohonanSuratController::class, 'simpanPermononanSurat'])
+    ->middleware(['auth'])
+    ->name('permohonan-surat.simpan');

@@ -61,7 +61,7 @@ class SuratTerbitController extends Controller
                 ]);
             }
             DB::commit();
-            return redirect()->route('surat-terbit.index')->with('success', 'Surat terbit berhasil disimpan.');
+            return redirect()->route('permohonan-surat.form')->with('success', 'Permohonan surat berhasil disimpan. Silakan tunggu proses verifikasi dari admin.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan surat terbit: ' . $e->getMessage()]);

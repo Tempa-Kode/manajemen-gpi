@@ -9,9 +9,11 @@ class SuratTerbit extends Model
     protected $table = 'surat_terbit';
 
     protected $fillable = [
+        'permohonan_id',
         'template_id',
         'nomor_surat',
         'judul_surat',
+        'terbit',
     ];
 
     public function template()
