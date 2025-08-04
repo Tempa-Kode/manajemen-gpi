@@ -346,6 +346,7 @@
                                     <tr>
                                         <th scope="col">No</th>
                                         <th scope="col">Nama Surat</th>
+                                        <th scope="col">Nomor Surat</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Keterangan</th>
@@ -356,6 +357,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->templateSurat->nama_template }}</td>
+                                            <td>{{ $item->status == 'disetujui' ? $item->suratTerbit->nomor_surat : '-' }}</td>
                                             <td><span class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span></td>
                                             <td>{{ $item->created_at->diffForHumans() }}</td>
                                             <td>
