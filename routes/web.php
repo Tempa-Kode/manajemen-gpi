@@ -88,3 +88,7 @@ Route::resource('kolekte', App\Http\Controllers\KolekteController::class)
 Route::get('data-jemaat/{id}/print', [App\Http\Controllers\DataJemaatController::class, 'print'])
     ->middleware(['auth', 'admin'])
     ->name('data-jemaat.print');
+
+Route::resource('template-surat', App\Http\Controllers\TemplateSuratController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('template-surat');

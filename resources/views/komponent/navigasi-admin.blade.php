@@ -61,6 +61,37 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Surat</h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-envelope text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Permohonan Surat</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-regular fa-paper-plane text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Surat Terbit</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Route::currentRouteName() == 'template-surat.index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('template-surat.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-file text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Template Surat</span>
+                </a>
+            </li>
+
+            <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">User</h6>
             </li>
             <li class="nav-item">
