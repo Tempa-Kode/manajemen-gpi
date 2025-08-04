@@ -10,8 +10,8 @@ class SuratTerbit extends Model
 
     protected $fillable = [
         'template_id',
+        'nomor_surat',
         'judul_surat',
-        'path_output',
     ];
 
     public function template()
@@ -22,5 +22,10 @@ class SuratTerbit extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'dibuat_oleh');
+    }
+
+    public function isianSurat()
+    {
+        return $this->hasMany(IsianSurat::class, 'surat_id');
     }
 }

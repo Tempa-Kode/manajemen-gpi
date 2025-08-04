@@ -92,3 +92,10 @@ Route::get('data-jemaat/{id}/print', [App\Http\Controllers\DataJemaatController:
 Route::resource('template-surat', App\Http\Controllers\TemplateSuratController::class)
     ->middleware(['auth', 'admin'])
     ->names('template-surat');
+
+Route::resource('surat-terbit', App\Http\Controllers\SuratTerbitController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('surat-terbit');
+Route::get('surat-terbit/{id}/download', [App\Http\Controllers\SuratTerbitController::class, 'downloadSurat'])
+    ->middleware(['auth', 'admin'])
+    ->name('surat-terbit.download');

@@ -2,6 +2,8 @@
 
 @section('title', 'Template Surat')
 
+@section('halaman', 'Template Surat')
+
 @section('content')
 <div class="container-fluid py-4">
     <div class="row">
