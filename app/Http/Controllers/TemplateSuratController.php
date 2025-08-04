@@ -60,7 +60,7 @@ class TemplateSuratController extends Controller
 
     public function edit($id)
     {
-        $template = TemplateSurat::findOrFail($id)->with('isianTemplates')->first();
+        $template = TemplateSurat::where('id', $id)->with('isianTemplates')->first();
         return view('halaman.template_surat.edit', compact('template'));
     }
 
