@@ -14,7 +14,7 @@ class SuratTerbitController extends Controller
 {
     public function index()
     {
-        $data = SuratTerbit::all();
+        $data = SuratTerbit::latest()->get();
         $templates = TemplateSurat::all();
         return view('halaman.surat-terbit.index', compact('data', 'templates'));
     }

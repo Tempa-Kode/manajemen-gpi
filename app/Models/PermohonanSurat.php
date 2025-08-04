@@ -20,4 +20,8 @@ class PermohonanSurat extends Model
         return $this->belongsTo(TemplateSurat::class, 'template_surat_id');
     }
 
+    public function suratTerbit()
+    {
+        return $this->hasOne(SuratTerbit::class, 'permohonan_id');
+    }
 }

@@ -348,7 +348,7 @@
                                         <th scope="col">Nama Surat</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
-                                        <th scope="col">File</th>
+                                        <th scope="col">Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -359,10 +359,11 @@
                                             <td><span class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span></td>
                                             <td>{{ $item->created_at->diffForHumans() }}</td>
                                             <td>
-                                                {{ $item->status == 'disetujui' ? 'a href="#">
-                                                    <i class="fa-solid fa-download me-2"></i>
-                                                    Download
-                                                </a>' : 'Belum Tersedia' }}
+                                                @if($item->status == 'disetujui')
+                                                    Silahkan ambil di kantor gereja.
+                                                @else
+                                                    Belum Tersedia
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

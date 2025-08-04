@@ -30,4 +30,9 @@ class SuratTerbit extends Model
     {
         return $this->hasMany(IsianSurat::class, 'surat_id');
     }
+
+    public function permohonan()
+    {
+        return $this->belongsTo(PermohonanSurat::class, 'permohonan_id');
+    }
 }

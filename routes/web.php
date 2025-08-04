@@ -109,3 +109,6 @@ Route::get('permohonan/form', [App\Http\Controllers\PermohonanSuratController::c
 Route::post('permohonan/simpan', [App\Http\Controllers\PermohonanSuratController::class, 'simpanPermononanSurat'])
     ->middleware(['auth'])
     ->name('permohonan-surat.simpan');
+Route::put('permohonan/tolak/{id}', [App\Http\Controllers\PermohonanSuratController::class, 'tolakPermohonan'])
+    ->middleware(['auth', 'admin'])
+    ->name('permohonan-surat.tolak');
