@@ -255,11 +255,11 @@
                                         {{ $sm->jenisKelaminText }}
                                     </p>
                                 </div>
-                                <div class="ms-auto">
-                                    <span class="status-badge status-{{ $sm->status }}">
-                                        {{ $sm->statusText }}
-                                    </span>
-                                </div>
+{{--                                <div class="ms-auto">--}}
+{{--                                    <span class="status-badge status-{{ $sm->status }}">--}}
+{{--                                        {{ $sm->statusText }}--}}
+{{--                                    </span>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -296,11 +296,11 @@
                                         {{ $remaja->jenisKelaminText }}
                                     </p>
                                 </div>
-                                <div class="ms-auto">
-                                    <span class="status-badge status-{{ $remaja->status }}">
-                                        {{ $remaja->statusText }}
-                                    </span>
-                                </div>
+{{--                                <div class="ms-auto">--}}
+{{--                                    <span class="status-badge status-{{ $remaja->status }}">--}}
+{{--                                        {{ $remaja->statusText }}--}}
+{{--                                    </span>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="row">
                                 <div class="col-4">
