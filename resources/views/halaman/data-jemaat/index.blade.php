@@ -1,8 +1,8 @@
 @extends('komponent.app')
 
-@section('title', 'Data Jemaat')
+@section('title', 'Data Keluarga Jemaat')
 
-@section('halaman', 'Data Jemaat')
+@section('halaman', 'Data Keluarga Jemaat')
 
 @section('content')
 <div class="row">
