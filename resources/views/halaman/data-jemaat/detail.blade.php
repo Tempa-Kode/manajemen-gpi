@@ -228,9 +228,9 @@
                                 <a href="{{ route('data-jemaat.print', $data->id) }}" target="_blank" class="btn btn-outline-info btn-sm">
                                     <i class="fas fa-print me-2"></i>Cetak Data
                                 </a>
-                                <button onclick="printData()" class="btn btn-outline-warning btn-sm">
+                                {{-- <button onclick="printData()" class="btn btn-outline-warning btn-sm">
                                     <i class="fas fa-file-pdf me-2"></i>Print Langsung
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
                     </div>

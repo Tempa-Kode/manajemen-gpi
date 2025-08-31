@@ -141,7 +141,10 @@ class DataJemaatController extends Controller
     public function print(string $id)
     {
         $data = Jemaat::with(['sekolahMinggu', 'remaja'])->findOrFail($id);
-        return view('halaman.data-jemaat.print', compact('data'));
+        $pdf = Pdf::loadView('halaman.data-jemaat.cetak', compact('data'));
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->stream(str_replace(['/', '\\'], '_', "{$data->nama_keluarga}.pdf"));
+        // return view('halaman.data-jemaat.print', compact('data'));
     }
 
     public function laporan(Request $request)
