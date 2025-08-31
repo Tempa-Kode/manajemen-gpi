@@ -156,6 +156,23 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tanggal_pendaftaran" class="form-label fw-bold">
+                                        <i class="fas fa-calendar-alt text-primary me-2"></i>Tanggal Terdaftar
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                        <input class="form-control" type="date" name="tanggal_pendaftaran" id="tanggal_pendaftaran"
+                                               value="{{ old('tanggal_pendaftaran', $data->tanggal_pendaftaran ? $data->tanggal_pendaftaran->format('Y-m-d') : '') }}">
+                                    </div>
+                                    @error('tanggal_pendaftaran')
+                                        <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <div class="d-flex gap-3 mt-4">

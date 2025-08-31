@@ -15,10 +15,12 @@ class Jemaat extends Model
         'ibu',
         'alamat',
         'no_hp',
+        'tanggal_pendaftaran',
     ];
 
     protected $casts = [
         'id_kk' => 'integer',
+        'tanggal_pendaftaran' => 'date',
     ];
 
     // Relationship dengan SekolahMinggu

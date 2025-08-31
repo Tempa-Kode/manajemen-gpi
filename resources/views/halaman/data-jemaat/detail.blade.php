@@ -164,7 +164,7 @@
                                         <i class="fas fa-clock text-muted"></i>
                                     </span>
                                     <input type="text" class="form-control border-start-0 bg-light" readonly
-                                           value="{{ $data->created_at->format('d F Y, H:i') }} WIB">
+                                           value="{{ $data->tanggal_pendaftaran ? $data->tanggal_pendaftaran->format('d F Y') : '-' }}">
                                 </div>
                             </div>
                         </div>

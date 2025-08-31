@@ -50,10 +50,6 @@
                                     <th>Pekerjaan</th>
                                     <td>{{ $remaja->pekerjaan ?? '-' }}</td>
                                 </tr>
-                                <tr>
-                                    <th>Terdaftar Sejak</th>
-                                    <td>{{ $remaja->created_at->format('d F Y, H:i') }}</td>
-                                </tr>
                             </table>
                         </div>
                     </div>

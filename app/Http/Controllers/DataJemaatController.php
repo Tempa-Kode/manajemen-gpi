@@ -39,6 +39,7 @@ class DataJemaatController extends Controller
             'ibu' => 'nullable|string|max:255',
             'alamat' => 'required|string',
             'no_hp' => 'nullable|string|max:20',
+            'tanggal_pendaftaran' => 'nullable|date',
         ], [
             'id_kk.required' => 'ID KK harus diisi.',
             'id_kk.numeric' => 'ID KK harus berupa angka.',
@@ -50,6 +51,7 @@ class DataJemaatController extends Controller
             'alamat.required' => 'Alamat harus diisi.',
             'alamat.string' => 'Alamat harus berupa teks.',
             'no_hp.max' => 'No HP maksimal 20 karakter.',
+            'tanggal_pendaftaran.date' => 'Tanggal pendaftaran harus berupa tanggal yang valid.',
         ]);
 
         try {
@@ -94,6 +96,7 @@ class DataJemaatController extends Controller
             'ibu' => 'nullable|string|max:255',
             'alamat' => 'required|string',
             'no_hp' => 'nullable|string|max:20',
+            'tanggal_pendaftaran' => 'nullable|date',
         ], [
             'id_kk.required' => 'ID KK harus diisi.',
             'id_kk.numeric' => 'ID KK harus berupa angka.',
@@ -105,6 +108,7 @@ class DataJemaatController extends Controller
             'alamat.required' => 'Alamat harus diisi.',
             'alamat.string' => 'Alamat harus berupa teks.',
             'no_hp.max' => 'No HP maksimal 20 karakter.',
+            'tanggal_pendaftaran.date' => 'Tanggal pendaftaran harus berupa tanggal yang valid.',
         ]);
 
         try {

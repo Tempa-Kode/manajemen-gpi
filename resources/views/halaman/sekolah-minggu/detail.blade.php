@@ -46,10 +46,6 @@
                                     <th>Kelas</th>
                                     <td>{{ $sekolahMinggu->kelas ?? '-' }}</td>
                                 </tr>
-                                <tr>
-                                    <th>Terdaftar Sejak</th>
-                                    <td>{{ $sekolahMinggu->created_at->format('d F Y, H:i') }}</td>
-                                </tr>
                             </table>
                         </div>
                     </div>

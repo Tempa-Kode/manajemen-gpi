@@ -67,6 +67,13 @@
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="tanggal_pendaftaran" class="form-control-label">Tanggal Pendaftaran</label>
+                        <input class="form-control" type="date" name="tanggal_pendaftaran" id="tanggal_pendaftaran" value="{{ old('tanggal_pendaftaran') }}">
+                        @error('tanggal_pendaftaran')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <button type="submit" class="btn btn-success">
                         <i class="fa-solid fa-floppy-disk me-2"></i>
                         Simpan
