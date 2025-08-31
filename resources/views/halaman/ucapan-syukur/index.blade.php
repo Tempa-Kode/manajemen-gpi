@@ -65,6 +65,18 @@
                                 <td class="align-middle text-center text-sm text-capitalize">{{ $item->status }}</td>
                                 <td class="align-middle text-center w-25">
                                     <a href="{{ asset($item->bukti_transfer) }}" target="_blank" class="btn btn-sm btn-outline-success">Bukti Transfer</a>
+                                    @if ($item->status == 'pending')
+                                        <form action="{{ route('ucapan-syukur.terima', $item->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fa-regular fa-circle-check"></i></button>
+                                        </form>
+                                        <form action="{{ route('ucapan-syukur.tolak', $item->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-circle-xmark"></i></button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -14,18 +14,18 @@ class UcapaSyukurController extends Controller
         $data = UcapanSyukur::latest()->get();
 
         // mengambil data ucapan syukur dalam bulan ini, dan menghitung nominal
-        $bulanIni = UcapanSyukur::whereMonth('created_at', now()->month)->get();
+        $bulanIni = UcapanSyukur::whereMonth('created_at', now()->month)->where('status', 'terima')->get();
         $totalBulanIni = $bulanIni->sum('nominal');
 
         // mengambil data ucapan syukur dalam minggu ini (gunakan rentang tanggal untuk menghindari fungsi WEEK() yang bermasalah)
         $now = now();
         $startOfWeek = $now->copy()->startOfWeek(); // default mulai Senin; ganti jika perlu
         $endOfWeek = $now->copy()->endOfWeek();
-        $mingguIni = UcapanSyukur::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $mingguIni = UcapanSyukur::whereBetween('created_at', [$startOfWeek, $endOfWeek])->where('status', 'terima')->get();
         $totalMingguIni = $mingguIni->sum('nominal');
 
         // mengambil data ucapan syukur dalam tahun ini
-        $tahunIni = UcapanSyukur::whereYear('created_at', now()->year)->get();
+        $tahunIni = UcapanSyukur::whereYear('created_at', now()->year)->where('status', 'terima')->get();
         $totalTahunIni = $tahunIni->sum('nominal');
 
         return view(
@@ -80,4 +80,21 @@ class UcapaSyukurController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan. Silakan coba lagi.');
         }
     }
+
+    public function terima($id)
+    {
+        $ucapan = UcapanSyukur::findOrFail($id);
+        $ucapan->update(['status' => 'terima']);
+
+        return redirect()->back()->with('success', 'Ucapan syukur berhasil diterima.');
+    }
+
+    public function tolak($id)
+    {
+        $ucapan = UcapanSyukur::findOrFail($id);
+        $ucapan->update(['status' => 'tolak']);
+
+        return redirect()->back()->with('success', 'Ucapan syukur berhasil ditolak.');
+    }
+
 }
