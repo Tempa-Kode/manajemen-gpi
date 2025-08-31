@@ -142,7 +142,7 @@
                 <tr>
                     <td class="c-no">{{ $loop->iteration }}</td>
                     <td class="c-nama">{{ $item->nama }}</td>
-                    <td class="c-jk">{{ $item->jenis_kelamin }}</td>
+                    <td class="c-jk">{{ $item->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                     <td class="c-pendidikan">{{ $item->pendidikan ?? "-" }}</td>
                     <td class="c-pekerjaan">{{ $item->pekerjaan ?? "-" }}</td>
                 </tr>
