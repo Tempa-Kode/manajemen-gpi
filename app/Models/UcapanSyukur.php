@@ -12,6 +12,8 @@ class UcapanSyukur extends Model
         'nama',
         'nominal',
         'bukti_transfer',
+        'no_hp',
+        'status',
     ];
 
     public function getFormattedNominalAttribute()
