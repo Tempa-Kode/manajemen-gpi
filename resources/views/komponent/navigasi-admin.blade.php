@@ -134,6 +134,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ str_contains(Route::currentRouteName(), 'ucapan-syukur.index') ? 'active' : '' }}" href="{{ route('ucapan-syukur.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-money-coins text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Ucapan Syukur</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <form action="{{ route('logout') }}" class="d-flex justify-content-center mt-3" method="POST" id="logout-form">
                     @csrf
                     @method('POST')
