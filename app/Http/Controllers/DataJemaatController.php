@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jemaat;
+use App\Models\Remaja;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DataJemaatController extends Controller
 {
@@ -135,5 +137,25 @@ class DataJemaatController extends Controller
     {
         $data = Jemaat::with(['sekolahMinggu', 'remaja'])->findOrFail($id);
         return view('halaman.data-jemaat.print', compact('data'));
+    }
+
+    public function laporan(Request $request)
+    {
+        $data = $request->input('data');
+        switch ($data) {
+            case 'remaja':
+                $remaja = Remaja::all();
+                $pdf = Pdf::loadView('halaman.remaja.laporan', compact('remaja'));
+                return $pdf->stream('data-remaja.pdf');
+                break;
+            case 'anak_sekolah_minggu':
+                $remaja = Remaja::all();
+                return view('halaman.remaja.laporan', compact('remaja'));
+                break;
+            default:
+                $remaja = Remaja::all();
+                return view('halaman.remaja.laporan', compact('remaja'));
+                break;
+        }
     }
 }

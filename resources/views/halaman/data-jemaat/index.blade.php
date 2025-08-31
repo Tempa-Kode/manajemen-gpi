@@ -10,11 +10,14 @@
         <div class="card mb-4 px-3">
             <div class="card-header pb-0">
                 <h4>Data Jemaat</h4>
-                <div class="">
+                <div class="d-flex justify-content-between">
                     <a href="{{ route('data-jemaat.create') }}" class="btn btn-primary">
                         <i class="fa-solid fa-plus me-2"></i>
                         Tambah Data
                     </a>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-file-arrow-down me-2"></i> Download Laporan
+                    </button>
                 </div>
                 @if (session('success'))
                     <div class="alert alert-success text-white" role="alert">
@@ -64,6 +67,33 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+{{-- Modal Download Report --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{ route('data-jemaat.laporan') }}" method="get">
+                @method('GET')
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Laporan Data Jemaat</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" aria-label="Default select example" name="data">
+                        <option hidden value="">pilih data</option>
+                        <option value="jemaat">Seluruh Jemaat</option>
+                        <option value="remaja">Remaja</option>
+                        <option value="anak_sekolah_minggu">Anak Sekolah Minggu</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Download</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

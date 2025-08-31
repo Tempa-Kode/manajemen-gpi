@@ -6,6 +6,7 @@ use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\TambahUserRequest;
 use App\Models\HakAkses;
 use App\Models\Jemaat;
+use App\Models\Remaja;
 use App\Models\User;
 use Illuminate\Http\Request;
 
