@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jemaat;
 use App\Models\Remaja;
+use App\Models\SekolahMinggu;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -149,8 +150,9 @@ class DataJemaatController extends Controller
                 return $pdf->stream('data-remaja.pdf');
                 break;
             case 'anak_sekolah_minggu':
-                $remaja = Remaja::all();
-                return view('halaman.remaja.laporan', compact('remaja'));
+                $sm = SekolahMinggu::all();
+                $pdf = Pdf::loadView('halaman.sekolah-minggu.laporan', compact('sm'));
+                return $pdf->stream('data-sekolah-minggu.pdf');
                 break;
             default:
                 $remaja = Remaja::all();
