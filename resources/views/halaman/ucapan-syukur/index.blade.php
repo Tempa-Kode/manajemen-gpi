@@ -51,6 +51,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama Jemaat</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nominal</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                             </tr>
                         </thead>
@@ -59,10 +60,11 @@
                             <tr>
                                 <td class="align-middle text-left text-sm">{{ $loop->iteration }}</td>
                                 <td class="align-middle text-left text-sm">{{ $item->nama }}</td>
-                                <td class="align-middle text-center text-sm">{{ $item->nominal }}</td>
+                                <td class="align-middle text-center text-sm">Rp. {{ number_format($item->nominal, 0, ',', '.') }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->created_at->locale('id')->isoFormat('D MMMM YYYY') }}</td>
+                                <td class="align-middle text-center text-sm text-capitalize">{{ $item->status }}</td>
                                 <td class="align-middle text-center w-25">
-                                    <a href="http://" class="btn btn-sm btn-outline-success">Bukti Transfer</a>
+                                    <a href="{{ asset($item->bukti_transfer) }}" target="_blank" class="btn btn-sm btn-outline-success">Bukti Transfer</a>
                                 </td>
                             </tr>
                             @endforeach

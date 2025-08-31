@@ -56,6 +56,7 @@
 
               <div class="hero-buttons">
                 <a href="{{ route('pendaftaranIbadah') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Daftar Ibadah</a>
+                <a href="{{ route('ucapan-syukur.submit') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Ucapan Syukur</a>
               </div>
             </div>
           </div>

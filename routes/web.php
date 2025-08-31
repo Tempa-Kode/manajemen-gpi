@@ -118,4 +118,6 @@ Route::put('permohonan/tolak/{id}', [App\Http\Controllers\PermohonanSuratControl
 
 Route::prefix('/ucapan-syukur')->group(function () {
     Route::get('/', [App\Http\Controllers\UcapaSyukurController::class, 'index'])->middleware(['auth', 'admin'])->name('ucapan-syukur.index');
+    Route::get('submit', [App\Http\Controllers\UcapaSyukurController::class, 'formUcapanSyukur'])->middleware(['auth', 'admin'])->name('ucapan-syukur.submit');
+    Route::post('submit', [App\Http\Controllers\UcapaSyukurController::class, 'submitUcapanSyukur'])->middleware(['auth', 'admin'])->name('ucapan-syukur.submit.post');
 });
