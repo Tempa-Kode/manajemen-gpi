@@ -155,8 +155,10 @@ class DataJemaatController extends Controller
                 return $pdf->stream('data-sekolah-minggu.pdf');
                 break;
             default:
-                $remaja = Remaja::all();
-                return view('halaman.remaja.laporan', compact('remaja'));
+                $jemaat = Jemaat::with(['sekolahMinggu', 'remaja'])->get();
+                $pdf = Pdf::loadView('halaman.data-jemaat.laporan', compact('jemaat'));
+                $pdf->setPaper('A4', 'landscape');
+                return $pdf->stream('data-jemaat.pdf');
                 break;
         }
     }
