@@ -16,6 +16,7 @@ class Remaja extends Model
         'jenis_kelamin',
         'pendidikan',
         'pekerjaan',
+        'tgl_meninggal',
         'status',
     ];
 

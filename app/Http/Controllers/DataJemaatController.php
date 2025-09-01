@@ -169,4 +169,12 @@ class DataJemaatController extends Controller
                 break;
         }
     }
+
+    public function keluarDariAnggotaJemaat($id)
+    {
+        $data = Jemaat::findOrFail($id);
+        $data->tgl_keluar = now();
+        $data->save();
+        return redirect()->route('data-jemaat.show', $data->id)->with('success', "Data jemaat {$data->nama_keluarga} berhasil dikeluarkan.");
+    }
 }

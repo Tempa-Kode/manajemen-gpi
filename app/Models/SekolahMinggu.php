@@ -15,6 +15,7 @@ class SekolahMinggu extends Model
         'tanggal_lahir',
         'jenis_kelamin',
         'kelas',
+        'tgl_meninggal',
         'status',
     ];
 

@@ -16,11 +16,15 @@ class Jemaat extends Model
         'alamat',
         'no_hp',
         'tanggal_pendaftaran',
+        'tgl_keluar',
+        'tgl_meninggal_ayah',
+        'tgl_meninggal_ibu',
     ];
 
     protected $casts = [
         'id_kk' => 'integer',
         'tanggal_pendaftaran' => 'date',
+        'tgl_keluar' => 'date',
     ];
 
     // Relationship dengan SekolahMinggu

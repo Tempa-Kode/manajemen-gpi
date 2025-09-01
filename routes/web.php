@@ -66,6 +66,9 @@ Route::resource('warta-gereja', App\Http\Controllers\WartaGerejaController::clas
 Route::resource('data-jemaat', App\Http\Controllers\DataJemaatController::class)
     ->middleware(['auth', 'admin'])
     ->names('data-jemaat');
+Route::put('data-jemaat/keluar/{id}', [App\Http\Controllers\DataJemaatController::class, 'keluarDariAnggotaJemaat'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.keluar');
 Route::get('laporan-jemaat', [App\Http\Controllers\DataJemaatController::class, 'laporan'])
     ->middleware(['auth', 'admin'])
     ->name('data-jemaat.laporan');

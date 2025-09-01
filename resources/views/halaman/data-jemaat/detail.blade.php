@@ -53,6 +53,7 @@
                     <h5 class="mb-0 text-white">
                         <i class="fas fa-home me-2"></i>
                         Informasi Keluarga
+                        <span class="badge rounded-pill text-bg-{{ isset($data->tgl_keluar) ? "danger" : 'success' }} text-white">{{ isset($data->tgl_keluar) ? "Keluar" : 'Aktif' }}</span>
                     </h5>
                 </div>
                 <div class="card-body p-4">
@@ -168,6 +169,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- Tanggal Keluar Keanggotaan Jemaat --}}
+                        @if (isset($data->tgl_keluar))
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-bold">
+                                        <i class="fas fa-calendar text-primary me-2"></i>Tanggal Keluar
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-clock text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 bg-light" readonly
+                                            value="{{ $data->tgl_keluar ? $data->tgl_keluar->format('d F Y') : '-' }}">
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -228,6 +247,15 @@
                                 <a href="{{ route('data-jemaat.print', $data->id) }}" target="_blank" class="btn btn-outline-info btn-sm">
                                     <i class="fas fa-print me-2"></i>Cetak Data
                                 </a>
+                                @if (!isset($data->tgl_keluar))
+                                    <form action="{{ route('data-jemaat.keluar', $data->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                            <i class="fa-solid fa-door-open me-2"></i>Keluar Dari Anggota Jemaat
+                                        </button>
+                                    </form>
+                                @endif
                                 {{-- <button onclick="printData()" class="btn btn-outline-warning btn-sm">
                                     <i class="fas fa-file-pdf me-2"></i>Print Langsung
                                 </button> --}}
