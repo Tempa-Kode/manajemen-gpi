@@ -193,10 +193,6 @@
                         <div class="fw-bold">{{ $sekolahMinggu->jemaat->nama_keluarga }}</div>
                     </div>
                     <div class="mb-3">
-                        <small class="text-muted">Umur Saat Ini</small>
-                        <div class="fw-bold">{{ $sekolahMinggu->umur }} tahun</div>
-                    </div>
-                    <div class="mb-3">
                         <small class="text-muted">Data Dibuat</small>
                         <div class="fw-bold">{{ $sekolahMinggu->created_at->format('d F Y') }}</div>
                     </div>
