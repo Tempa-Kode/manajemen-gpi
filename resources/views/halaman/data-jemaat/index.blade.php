@@ -34,6 +34,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID KK</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Keluarga</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Hp</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl Pendaftaran</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-25">Aksi</th>
                             </tr>
@@ -45,6 +46,7 @@
                                 <td class="align-middle text-left text-sm">{{ $item->id_kk }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->nama_keluarga }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->no_hp }}</td>
+                                <td class="align-middle text-center text-sm">{{ $item->tgl_keluar ? 'Keluar' : 'Aktif' }}</td>
                                 <td class="align-middle text-center text-sm">{{ $item->tanggal_pendaftaran ?? '-' }}</td>
                                 <td class="align-middle text-center w-25">
                                     <a href="{{ route('data-jemaat.edit', $item->id) }}" class="btn btn-sm btn-secondary"
