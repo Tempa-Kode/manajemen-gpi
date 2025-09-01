@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\IsianSurat;
-use App\Models\PermohonanSurat;
 use App\Models\SuratTerbit;
-use App\Models\TemplateSurat;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\TemplateSurat;
+use App\Models\PermohonanSurat;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SuratTerbitController;
 
 class PermohonanSuratController extends Controller
 {
@@ -48,6 +49,7 @@ class PermohonanSuratController extends Controller
                 'template_surat_id' => $validasi['template_id'],
                 'nama_pemohon' => Auth::user()->name,
                 'no_telp' => Auth::user()->no_telp,
+                'user_id' => Auth::user()->id
             ]);
 
             $suratTerbit = SuratTerbit::create([
@@ -65,7 +67,7 @@ class PermohonanSuratController extends Controller
                 ]);
             }
             DB::commit();
-            return redirect()->route('surat-terbit.index')->with('success', 'Surat terbit berhasil disimpan.');
+            return redirect()->route('permohonan-surat.form')->with('success', 'Surat terbit berhasil disimpan.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan surat terbit: ' . $e->getMessage()]);
@@ -82,15 +84,15 @@ class PermohonanSuratController extends Controller
 
     public function edit($id)
     {
+        $nomorSurat = SuratTerbitController::generateNomorSurat();
         $suratTerbit = SuratTerbit::with('isianSurat')->findOrFail($id);
         $template = TemplateSurat::with('isianTemplates')->findOrFail($suratTerbit->template_id);
-        return view('halaman.permohonan-surat.edit', compact('suratTerbit', 'template'));
+        return view('halaman.permohonan-surat.edit', compact('suratTerbit', 'template', 'nomorSurat'));
     }
 
     public function update(Request $request, $id)
     {
         $suratTerbit = SuratTerbit::findOrFail($id);
-
         $validasi = $request->validate([
             'template_id' => 'required|exists:template_surat,id',
             'nomor_surat' => 'required|string|max:255',
@@ -121,6 +123,8 @@ class PermohonanSuratController extends Controller
             IsianSurat::where('surat_id', $id)->delete();
 
             // Tambah isian surat baru
+            IsianSurat::create(['surat_id' => $suratTerbit->id, 'nama_field' => 'tahunsurat', 'isi_field' => date('Y')]);
+            IsianSurat::create(['surat_id' => $suratTerbit->id, 'nama_field' => 'nomor', 'isi_field' => $validasi['nomor_surat']]);
             foreach ($validasi['nama_field'] as $index => $namaField) {
                 IsianSurat::create([
                     'surat_id' => $suratTerbit->id,

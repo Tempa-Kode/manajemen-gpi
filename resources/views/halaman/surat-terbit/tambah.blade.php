@@ -32,8 +32,15 @@
                     <input type="hidden" name="template_id" value="{{ $template->id }}">
                     <div class="form-group">
                         <label for="nomor_surat" class="form-control-label">Nomor Surat <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="nomor_surat" id="nomor_surat" value="{{ old('nomor_surat') }}">
+                        <input class="form-control" type="text" name="nomor_surat" id="nomor_surat" value="{{ old('nomor_surat', $nomorSurat) }}" readonly>
                         @error('nomor_surat')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tahunsurat" class="form-control-label">Tahun Surat Terbit<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="tahunsurat" id="tahunsurat" value="{{ old('tahunsurat', $tahun) }}" readonly>
+                        @error('tahunsurat')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>

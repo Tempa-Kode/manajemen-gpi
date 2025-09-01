@@ -13,6 +13,7 @@ class PermohonanSurat extends Model
         'nama_pemohon',
         'no_telp',
         'status',
+        'user_id',
     ];
 
     public function templateSurat()

@@ -32,7 +32,7 @@
                         <input type="hidden" name="template_id" value="{{ $template->id }}">
                         <div class="form-group">
                             <label for="nomor_surat" class="form-control-label">Nomor Surat <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="nomor_surat" id="nomor_surat" value="{{ old('nomor_surat', $suratTerbit->nomor_surat) }}">
+                            <input class="form-control" type="text" name="nomor_surat" id="nomor_surat" value="{{ old('nomor_surat', $suratTerbit->nomor_surat ?? $nomorSurat) }}">
                             @error('nomor_surat')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                             @enderror
