@@ -22,6 +22,7 @@ class Remaja extends Model
 
     protected $casts = [
         'tanggal_lahir' => 'date',
+        'tgl_meninggal' => 'date',
     ];
 
     // Relationship dengan Jemaat
@@ -45,12 +46,36 @@ class Remaja extends Model
     // Accessor untuk status
     public function getStatusTextAttribute()
     {
+        if ($this->tgl_meninggal) {
+            return 'Meninggal';
+        }
         return $this->status == 'aktif' ? 'Aktif' : 'Tidak Aktif';
+    }
+
+    // Accessor untuk status keaktifan berdasarkan kematian
+    public function getStatusKeaktifanAttribute()
+    {
+        if ($this->tgl_meninggal) {
+            return 'Meninggal';
+        }
+        return 'Hidup';
     }
 
     // Scope untuk filter aktif
     public function scopeAktif($query)
     {
-        return $query->where('status', 'aktif');
+        return $query->where('status', 'aktif')->whereNull('tgl_meninggal');
+    }
+
+    // Scope untuk filter meninggal
+    public function scopeMeninggal($query)
+    {
+        return $query->whereNotNull('tgl_meninggal');
+    }
+
+    // Scope untuk filter hidup
+    public function scopeHidup($query)
+    {
+        return $query->whereNull('tgl_meninggal');
     }
 }

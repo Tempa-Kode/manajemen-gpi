@@ -69,6 +69,21 @@ Route::resource('data-jemaat', App\Http\Controllers\DataJemaatController::class)
 Route::put('data-jemaat/keluar/{id}', [App\Http\Controllers\DataJemaatController::class, 'keluarDariAnggotaJemaat'])
     ->middleware(['auth', 'admin'])
     ->name('data-jemaat.keluar');
+
+// Routes untuk mengelola tanggal kematian
+Route::put('data-jemaat/meninggal-ayah/{id}', [App\Http\Controllers\DataJemaatController::class, 'updateMeninggalAyah'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.meninggal-ayah');
+Route::put('data-jemaat/meninggal-ibu/{id}', [App\Http\Controllers\DataJemaatController::class, 'updateMeninggalIbu'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.meninggal-ibu');
+Route::put('data-jemaat/reset-ayah/{id}', [App\Http\Controllers\DataJemaatController::class, 'resetMeninggalAyah'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.reset-ayah');
+Route::put('data-jemaat/reset-ibu/{id}', [App\Http\Controllers\DataJemaatController::class, 'resetMeninggalIbu'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.reset-ibu');
+
 Route::get('laporan-jemaat', [App\Http\Controllers\DataJemaatController::class, 'laporan'])
     ->middleware(['auth', 'admin'])
     ->name('data-jemaat.laporan');
@@ -77,9 +92,25 @@ Route::resource('sekolah-minggu', App\Http\Controllers\SekolahMingguController::
     ->middleware(['auth', 'admin'])
     ->names('sekolah-minggu');
 
+// Routes untuk mengelola tanggal kematian sekolah minggu
+Route::put('sekolah-minggu/meninggal/{id}', [App\Http\Controllers\SekolahMingguController::class, 'updateMeninggal'])
+    ->middleware(['auth', 'admin'])
+    ->name('sekolah-minggu.meninggal');
+Route::put('sekolah-minggu/reset/{id}', [App\Http\Controllers\SekolahMingguController::class, 'resetMeninggal'])
+    ->middleware(['auth', 'admin'])
+    ->name('sekolah-minggu.reset');
+
 Route::resource('remaja', App\Http\Controllers\RemajaController::class)
     ->middleware(['auth', 'admin'])
     ->names('remaja');
+
+// Routes untuk mengelola tanggal kematian remaja
+Route::put('remaja/meninggal/{id}', [App\Http\Controllers\RemajaController::class, 'updateMeninggal'])
+    ->middleware(['auth', 'admin'])
+    ->name('remaja.meninggal');
+Route::put('remaja/reset/{id}', [App\Http\Controllers\RemajaController::class, 'resetMeninggal'])
+    ->middleware(['auth', 'admin'])
+    ->name('remaja.reset');
 
 // Route untuk download report PDF kolekte
 Route::get('kolekte/download-report', [App\Http\Controllers\KolekteController::class, 'downloadReport'])

@@ -117,4 +117,41 @@ class RemajaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus data: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Update tanggal meninggal remaja
+     */
+    public function updateMeninggal(Request $request, $id)
+    {
+        $request->validate([
+            'tgl_meninggal' => 'required|date'
+        ], [
+            'tgl_meninggal.required' => 'Tanggal meninggal harus diisi.',
+            'tgl_meninggal.date' => 'Tanggal meninggal harus berupa tanggal yang valid.'
+        ]);
+
+        try {
+            $remaja = Remaja::findOrFail($id);
+            $remaja->tgl_meninggal = $request->tgl_meninggal;
+            $remaja->save();
+            return redirect()->route('remaja.show', $remaja->id)->with('success', "Tanggal meninggal {$remaja->nama} berhasil diperbarui.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui tanggal meninggal: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Reset tanggal meninggal remaja
+     */
+    public function resetMeninggal($id)
+    {
+        try {
+            $remaja = Remaja::findOrFail($id);
+            $remaja->tgl_meninggal = null;
+            $remaja->save();
+            return redirect()->route('remaja.show', $remaja->id)->with('success', "Status {$remaja->nama} berhasil diubah menjadi aktif.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status: ' . $e->getMessage());
+        }
+    }
 }

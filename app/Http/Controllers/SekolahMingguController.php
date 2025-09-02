@@ -113,4 +113,41 @@ class SekolahMingguController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus data: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Update tanggal meninggal anak sekolah minggu
+     */
+    public function updateMeninggal(Request $request, $id)
+    {
+        $request->validate([
+            'tgl_meninggal' => 'required|date'
+        ], [
+            'tgl_meninggal.required' => 'Tanggal meninggal harus diisi.',
+            'tgl_meninggal.date' => 'Tanggal meninggal harus berupa tanggal yang valid.'
+        ]);
+
+        try {
+            $sekolahMinggu = SekolahMinggu::findOrFail($id);
+            $sekolahMinggu->tgl_meninggal = $request->tgl_meninggal;
+            $sekolahMinggu->save();
+            return redirect()->route('sekolah-minggu.show', $sekolahMinggu->id)->with('success', "Tanggal meninggal {$sekolahMinggu->nama} berhasil diperbarui.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui tanggal meninggal: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Reset tanggal meninggal anak sekolah minggu
+     */
+    public function resetMeninggal($id)
+    {
+        try {
+            $sekolahMinggu = SekolahMinggu::findOrFail($id);
+            $sekolahMinggu->tgl_meninggal = null;
+            $sekolahMinggu->save();
+            return redirect()->route('sekolah-minggu.show', $sekolahMinggu->id)->with('success', "Status {$sekolahMinggu->nama} berhasil diubah menjadi aktif.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status: ' . $e->getMessage());
+        }
+    }
 }

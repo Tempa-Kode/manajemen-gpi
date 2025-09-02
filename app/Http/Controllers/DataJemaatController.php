@@ -177,4 +177,78 @@ class DataJemaatController extends Controller
         $data->save();
         return redirect()->route('data-jemaat.show', $data->id)->with('success', "Data jemaat {$data->nama_keluarga} berhasil dikeluarkan.");
     }
+
+    /**
+     * Update tanggal meninggal ayah
+     */
+    public function updateMeninggalAyah(Request $request, $id)
+    {
+        $request->validate([
+            'tgl_meninggal_ayah' => 'required|date'
+        ], [
+            'tgl_meninggal_ayah.required' => 'Tanggal meninggal ayah harus diisi.',
+            'tgl_meninggal_ayah.date' => 'Tanggal meninggal ayah harus berupa tanggal yang valid.'
+        ]);
+
+        try {
+            $data = Jemaat::findOrFail($id);
+            $data->tgl_meninggal_ayah = $request->tgl_meninggal_ayah;
+            $data->save();
+            return redirect()->route('data-jemaat.show', $data->id)->with('success', "Tanggal meninggal ayah untuk keluarga {$data->nama_keluarga} berhasil diperbarui.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui tanggal meninggal ayah: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Update tanggal meninggal ibu
+     */
+    public function updateMeninggalIbu(Request $request, $id)
+    {
+        $request->validate([
+            'tgl_meninggal_ibu' => 'required|date'
+        ], [
+            'tgl_meninggal_ibu.required' => 'Tanggal meninggal ibu harus diisi.',
+            'tgl_meninggal_ibu.date' => 'Tanggal meninggal ibu harus berupa tanggal yang valid.'
+        ]);
+
+        try {
+            $data = Jemaat::findOrFail($id);
+            $data->tgl_meninggal_ibu = $request->tgl_meninggal_ibu;
+            $data->save();
+            return redirect()->route('data-jemaat.show', $data->id)->with('success', "Tanggal meninggal ibu untuk keluarga {$data->nama_keluarga} berhasil diperbarui.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui tanggal meninggal ibu: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Reset tanggal meninggal ayah
+     */
+    public function resetMeninggalAyah($id)
+    {
+        try {
+            $data = Jemaat::findOrFail($id);
+            $data->tgl_meninggal_ayah = null;
+            $data->save();
+            return redirect()->route('data-jemaat.show', $data->id)->with('success', "Status ayah untuk keluarga {$data->nama_keluarga} berhasil diubah menjadi aktif.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status ayah: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Reset tanggal meninggal ibu
+     */
+    public function resetMeninggalIbu($id)
+    {
+        try {
+            $data = Jemaat::findOrFail($id);
+            $data->tgl_meninggal_ibu = null;
+            $data->save();
+            return redirect()->route('data-jemaat.show', $data->id)->with('success', "Status ibu untuk keluarga {$data->nama_keluarga} berhasil diubah menjadi aktif.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status ibu: ' . $e->getMessage());
+        }
+    }
 }

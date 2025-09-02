@@ -25,6 +25,8 @@ class Jemaat extends Model
         'id_kk' => 'integer',
         'tanggal_pendaftaran' => 'date',
         'tgl_keluar' => 'date',
+        'tgl_meninggal_ayah' => 'date',
+        'tgl_meninggal_ibu' => 'date',
     ];
 
     // Relationship dengan SekolahMinggu
@@ -43,5 +45,62 @@ class Jemaat extends Model
     public function getTotalAnggotaAttribute()
     {
         return 2 + $this->sekolahMinggu()->count() + $this->remaja()->count();
+    }
+
+    // Accessor untuk status ayah
+    public function getStatusAyahAttribute()
+    {
+        if ($this->tgl_meninggal_ayah) {
+            return 'Meninggal';
+        }
+        return 'Aktif';
+    }
+
+    // Accessor untuk status ibu
+    public function getStatusIbuAttribute()
+    {
+        if ($this->tgl_meninggal_ibu) {
+            return 'Meninggal';
+        }
+        return 'Aktif';
+    }
+
+    // Accessor untuk status keluarga keseluruhan
+    public function getStatusKeluargaAttribute()
+    {
+        if ($this->tgl_keluar) {
+            return 'Keluar';
+        }
+        if ($this->tgl_meninggal_ayah && $this->tgl_meninggal_ibu) {
+            return 'Kedua Orang Tua Meninggal';
+        }
+        if ($this->tgl_meninggal_ayah || $this->tgl_meninggal_ibu) {
+            return 'Salah Satu Orang Tua Meninggal';
+        }
+        return 'Aktif';
+    }
+
+    // Scope untuk keluarga aktif
+    public function scopeAktif($query)
+    {
+        return $query->whereNull('tgl_keluar');
+    }
+
+    // Scope untuk keluarga yang keluar
+    public function scopeKeluar($query)
+    {
+        return $query->whereNotNull('tgl_keluar');
+    }
+
+    // Scope untuk keluarga dengan ayah meninggal
+    public function scopeAyahMeninggal($query)
+    {
+        return $query->whereNotNull('tgl_meninggal_ayah');
+    }
+
+    // Scope untuk keluarga dengan ibu meninggal
+    public function scopeIbuMeninggal($query)
+    {
+        return $query->whereNotNull('tgl_meninggal_ibu');
     }
 }
