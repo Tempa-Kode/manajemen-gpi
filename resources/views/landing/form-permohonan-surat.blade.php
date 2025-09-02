@@ -4,28 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Permohonan Surat - GPI Sidang Perawang</title>
     <meta name="description" content="Detail Warta Gereja Permohonan Surat">
     <meta name="keywords" content="warta gereja, informasi gereja, gpi perawang">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.ico') }}" rel="icon">
-    <link href="{{ asset('landing/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset("assets/img/favicon.ico") }}" rel="icon">
+    <link href="{{ asset("landing/assets/img/apple-touch-icon.png") }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('landing/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('landing/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('landing/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('landing/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('landing/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/vendor/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/vendor/bootstrap-icons/bootstrap-icons.css") }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/vendor/aos/aos.css") }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/vendor/glightbox/css/glightbox.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/vendor/swiper/swiper-bundle.min.css") }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{ asset('landing/assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset("landing/assets/css/main.css") }}" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -208,6 +211,42 @@
             box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
         }
 
+        /* Custom styles for Surat Keterangan form */
+        .form-control:focus {
+            border-color: #2c4964;
+            box-shadow: 0 0 0 0.2rem rgba(44, 73, 100, 0.25);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c4964;
+            margin-bottom: 8px;
+        }
+
+        .text-danger {
+            color: #dc3545 !important;
+        }
+
+        .alert-info {
+            background-color: #e7f3ff;
+            border-color: #b3d9ff;
+            color: #0c5460;
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        }
+
         @media (max-width: 768px) {
             .warta-title {
                 font-size: 2rem;
@@ -245,198 +284,351 @@
 
 <body class="starter-page-page">
 
-<header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div
+            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-            <img src="{{ asset('assets/img/favicon.ico') }}" alt="logo gpi" class="img-fluid">
-        </a>
+            <a href="{{ route("home") }}" class="logo d-flex align-items-center me-auto me-xl-0">
+                <img src="{{ asset("assets/img/favicon.ico") }}" alt="logo gpi" class="img-fluid">
+            </a>
 
-        @include('komponent.navigasi-landing')
+            @include("komponent.navigasi-landing")
 
-        <a class="btn-getstarted" href="{{ route('home') }}#about">Get Started</a>
+            <a class="btn-getstarted" href="{{ route("home") }}#about">Get Started</a>
 
-    </div>
-</header>
-
-<main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title light-background">
-        <div class="container">
-            <h1>Permohonan Surat</h1>
-            <nav class="breadcrumbs">
-                <ol>
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="">Permohonan Surat</a></li>
-                </ol>
-            </nav>
         </div>
-    </div><!-- End Page Title -->
+    </header>
 
-    <!-- Warta Detail Section -->
-    <section class="detail-container">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
+    <main class="main">
 
-                    <!-- Warta Detail Card -->
-                    <div class="warta-detail" data-aos="fade-up">
+        <!-- Page Title -->
+        <div class="page-title light-background">
+            <div class="container">
+                <h1>Permohonan Surat</h1>
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="{{ route("home") }}">Home</a></li>
+                        <li><a href="">Permohonan Surat</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div><!-- End Page Title -->
 
-                        <!-- Header -->
-                        <div class="warta-header">
-                            <h1 class="warta-title text-white">{{ request()->id ? "Form Surat" : "Pilih Surat" }}</h1>
-                            @if(request()->id)
-                                <h3 class="text-white">{{ $templates->nama_template }}</h3>
-                            @endif
-                        </div>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if(session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        <!-- Content -->
-                        <div class="warta-content">
-                            <div class="content-text">
-                                @if(request()->id)
-                                    <a href="{{ route('permohonan-surat.form') }}" class="btn btn-warning btn-sm mb-2"><i class="fa-solid fa-backward me-2"></i>Kembali</a>
-                                    <form action="{{ route('permohonan-surat.simpan') }}" method="post">
-                                    @csrf
-                                    @method('POST')
-                                        <input type="hidden" name="template_id" value="{{ $templates->id }}">
-                                    @foreach($templates->isianTemplates as $field)
-                                        @if($field->nama_field !== 'nomor')
-                                            <div class="mb-3">
-                                                <label for="{{ $field->nama_field }}" class="form-label">{{ $field->label }}</label>
-                                                <input type="hidden" name="nama_field[]" value="{{ $field->nama_field }}">
-                                                <input type="{{ $field->tipe }}" class="form-control" id="{{ $field->nama_field }}" name="isi_field[]">
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                        <button type="submit" class="btn btn-success float-end">Kirim Permohonan</button>
-                                    </form>
-                                @else
-                                    <p>Silakan pilih jenis surat yang ingin Anda buat:</p>
-                                    <ul>
-                                        @foreach($templates as $template)
-                                            <li>
-                                                <a href="{{ route('permohonan-surat.form', ['id' => $template->id]) }}" class="text-dark">
-                                                    {{ $template->nama_template }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+        <!-- Warta Detail Section -->
+        <section class="detail-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+
+                        <!-- Warta Detail Card -->
+                        <div class="warta-detail" data-aos="fade-up">
+
+                            <!-- Header -->
+                            <div class="warta-header">
+                                <h1 class="warta-title text-white">{{ request()->id ? "Form Surat" : "Pilih Surat" }}
+                                </h1>
+                                @if (request()->id)
+                                    <h3 class="text-white">{{ $templates->nama_template }}</h3>
                                 @endif
                             </div>
-                        </div>
-                        <div class="table-responsive px-3">
-                            <hr>
-                            <h4 class="text-center text-uppercase">Surat Yang Pernah Di Ajukan</h4>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama Surat</th>
-                                        <th scope="col">Nomor Surat</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Tanggal</th>
-                                        <th scope="col">Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($permohonan as $item)
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (session("success"))
+                                <div class="alert alert-success">
+                                    {{ session("success") }}
+                                </div>
+                            @endif
+                            <!-- Content -->
+                            <div class="warta-content">
+                                <div class="content-text">
+                                    @if (request()->id)
+                                        <a href="{{ route("permohonan-surat.form") }}"
+                                            class="btn btn-warning btn-sm mb-2"><i
+                                                class="fa-solid fa-backward me-2"></i>Kembali</a>
+                                        <form action="{{ route("permohonan-surat.simpan") }}" method="post">
+                                            @csrf
+                                            @method("POST")
+                                            <input type="hidden" name="template_id" value="{{ $templates->id }}">
+
+                                            @if ($templates->nama_template === "Surat Keterangan Anggota Jemaat Gereja")
+                                                {{-- Field manual khusus untuk Surat Keterangan Anggota Jemaat --}}
+                                                <div class="mb-3">
+                                                    <label for="nama-keluarga" class="form-label">Keluarga <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" name="nama_field[]" value="nama-keluarga">
+                                                    <select class="form-control" id="nama-keluarga" name="isi_field[]"
+                                                        required>
+                                                        <option value="">Pilih Keluarga</option>
+                                                        @foreach ($keluarga as $kel)
+                                                            <option value="{{ $kel->nama_keluarga }}"
+                                                                data-id="{{ $kel->id }}">
+                                                                {{ $kel->nama_keluarga }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nama" class="form-label">Nama <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" name="nama_field[]" value="nama">
+                                                    <select class="form-control" id="nama" name="isi_field[]"
+                                                        required disabled>
+                                                        <option value="">Pilih keluarga terlebih dahulu</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">Pilih keluarga terlebih dahulu
+                                                        untuk memuat anggota keluarga</small>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="ttl" class="form-label">Tempat/Tgl Lahir
+                                                                <span class="text-danger">*</span></label>
+                                                            <input type="hidden" name="nama_field[]" value="ttl">
+                                                            <input type="text" class="form-control" id="ttl"
+                                                                name="isi_field[]"
+                                                                placeholder="Contoh: Medan, 15 Januari 1990"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="jenis-kelamin" class="form-label">Jenis
+                                                                Kelamin <span class="text-danger">*</span></label>
+                                                            <input type="hidden" name="nama_field[]"
+                                                                value="jenis-kelamin">
+                                                            <select class="form-control" id="jenis-kelamin"
+                                                                name="isi_field[]" required>
+                                                                <option value="">Pilih Jenis Kelamin</option>
+                                                                <option value="Laki-laki">Laki-laki</option>
+                                                                <option value="Perempuan">Perempuan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="alert alert-info">
+                                                    <i class="fas fa-info-circle me-2"></i>
+                                                    <strong>Informasi:</strong> Surat keterangan ini akan dibuat sesuai
+                                                    format resmi Gereja Pentakosta Indonesia Sidang Perawang.
+                                                </div>
+                                            @else
+                                                {{-- Field dinamis untuk template lainnya --}}
+                                                @foreach ($templates->isianTemplates as $field)
+                                                    @if ($field->nama_field !== "nomor")
+                                                        <div class="mb-3">
+                                                            <label for="{{ $field->nama_field }}"
+                                                                class="form-label">{{ $field->label }}</label>
+                                                            <input type="hidden" name="nama_field[]"
+                                                                value="{{ $field->nama_field }}">
+                                                            @if ($field->tipe == "textarea")
+                                                                <textarea class="form-control" id="{{ $field->nama_field }}" name="isi_field[]" rows="4"
+                                                                    placeholder="Masukkan {{ strtolower($field->label) }}"></textarea>
+                                                            @elseif($field->tipe == "select")
+                                                                <select class="form-control"
+                                                                    id="{{ $field->nama_field }}" name="isi_field[]">
+                                                                    <option value="">Pilih {{ $field->label }}
+                                                                    </option>
+                                                                    {{-- Tambahkan option sesuai kebutuhan --}}
+                                                                </select>
+                                                            @else
+                                                                <input type="{{ $field->tipe }}"
+                                                                    class="form-control"
+                                                                    id="{{ $field->nama_field }}" name="isi_field[]"
+                                                                    placeholder="Masukkan {{ strtolower($field->label) }}">
+                                                            @endif
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+
+                                            <button type="submit" class="btn btn-success float-end">
+                                                <i class="fas fa-paper-plane me-2"></i>Kirim Permohonan
+                                            </button>
+                                        </form>
+                                    @else
+                                        <p>Silakan pilih jenis surat yang ingin Anda buat:</p>
+                                        <ul>
+                                            @foreach ($templates as $template)
+                                                <li>
+                                                    <a href="{{ route("permohonan-surat.form", ["id" => $template->id]) }}"
+                                                        class="text-dark">
+                                                        {{ $template->nama_template }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="table-responsive px-3">
+                                <hr>
+                                <h4 class="text-center text-uppercase">Surat Yang Pernah Di Ajukan</h4>
+                                <table class="table table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->templateSurat->nama_template }}</td>
-                                            <td>{{ $item->status == 'disetujui' ? $item->suratTerbit->nomor_surat : '-' }}</td>
-                                            <td><span class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span></td>
-                                            <td>{{ $item->created_at->diffForHumans() }}</td>
-                                            <td>
-                                                @if($item->status == 'disetujui')
-                                                    Silahkan ambil di kantor gereja.
-                                                @else
-                                                    Belum Tersedia
-                                                @endif
-                                            </td>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Surat</th>
+                                            <th scope="col">Nomor Surat</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Tanggal</th>
+                                            <th scope="col">Keterangan</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($permohonan as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->templateSurat->nama_template }}</td>
+                                                <td>{{ $item->status == "disetujui" ? $item->suratTerbit->nomor_surat : "-" }}
+                                                </td>
+                                                <td><span
+                                                        class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span>
+                                                </td>
+                                                <td>{{ $item->created_at->diffForHumans() }}</td>
+                                                <td>
+                                                    @if ($item->status == "disetujui")
+                                                        Silahkan ambil di kantor gereja.
+                                                    @else
+                                                        Belum Tersedia
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
+
                     </div>
+                </div>
+            </div>
+        </section><!-- End Warta Detail Section -->
 
+    </main>
+
+    <footer id="footer" class="footer">
+
+        <div class="container footer-top">
+            <div class="row gy-4 justify-content-between">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">GPI SIdang Perawang</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
+                        <p>Kabupanten Siak, Riau</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+62 853 0875 8765</span></p>
+                        <p><strong>Email:</strong> <span>info@gpi.org</span></p>
+                    </div>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/youth_gpi_prwg?igsh=c3owNHRnNGhyMjV4"><i
+                                class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tentang Gereja</a></li>
+                        <li><a href="#">Jadwal Pelayanan</a></li>
+                        <li><a href="#">Pendaftaran Ibadah</a></li>
+                        <li><a href="#">Struktur Gereja</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section><!-- End Warta Detail Section -->
 
-</main>
-
-<footer id="footer" class="footer">
-
-    <div class="container footer-top">
-        <div class="row gy-4 justify-content-between">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">GPI SIdang Perawang</span>
-                </a>
-                <div class="footer-contact pt-3">
-                    <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
-                    <p>Kabupanten Siak, Riau</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+62 853 0875 8765</span></p>
-                    <p><strong>Email:</strong> <span>info@gpi.org</span></p>
-                </div>
-                <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/youth_gpi_prwg?igsh=c3owNHRnNGhyMjV4"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tentang Gereja</a></li>
-                    <li><a href="#">Jadwal Pelayanan</a></li>
-                    <li><a href="#">Pendaftaran Ibadah</a></li>
-                    <li><a href="#">Struktur Gereja</a></li>
-                </ul>
-            </div>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>All Rights
+                    Reserved</span></p>
         </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>All Rights Reserved</span></p>
-    </div>
+    </footer>
 
-</footer>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="{{ asset("landing/assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+    <script src="{{ asset("landing/assets/vendor/php-email-form/validate.js") }}"></script>
+    <script src="{{ asset("landing/assets/vendor/aos/aos.js") }}"></script>
+    <script src="{{ asset("landing/assets/vendor/glightbox/js/glightbox.min.js") }}"></script>
+    <script src="{{ asset("landing/assets/vendor/swiper/swiper-bundle.min.js") }}"></script>
+    <script src="{{ asset("landing/assets/vendor/purecounter/purecounter_vanilla.js") }}"></script>
 
-<!-- Vendor JS Files -->
-<script src="{{ asset('landing/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('landing/assets/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('landing/assets/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('landing/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-<script src="{{ asset('landing/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('landing/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Main JS File -->
-<script src="{{ asset('landing/assets/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ asset("landing/assets/js/main.js") }}"></script>
 
+    <script>
+        $(document).ready(function() {
+            // Setup CSRF token untuk AJAX
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            // Event listener untuk dropdown keluarga
+            $('#nama-keluarga').on('change', function() {
+                const keluargaId = $(this).find('option:selected').data('id');
+                const namaSelect = $('#nama');
+
+                if (keluargaId) {
+                    // Reset dan disable nama dropdown
+                    namaSelect.prop('disabled', true).html('<option value="">Memuat...</option>');
+
+                    // AJAX request untuk mendapatkan anggota keluarga
+                    $.ajax({
+                        url: '{{ route("permohonan-surat.anggota-keluarga") }}',
+                        type: 'GET',
+                        data: {
+                            keluarga_id: keluargaId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                namaSelect.html(
+                                    '<option value="">Pilih Anggota Keluarga</option>');
+
+                                // Tambahkan option untuk setiap anggota keluarga
+                                response.anggota.forEach(function(anggota) {
+                                    namaSelect.append(
+                                        `<option value="${anggota.nama}">${anggota.nama} (${anggota.kategori})</option>`
+                                    );
+                                });
+
+                                namaSelect.prop('disabled', false);
+                            } else {
+                                namaSelect.html(
+                                    '<option value="">Tidak ada anggota keluarga</option>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error:', error);
+                            namaSelect.html('<option value="">Error memuat data</option>');
+                            alert('Terjadi kesalahan saat memuat anggota keluarga');
+                        }
+                    });
+                } else {
+                    // Reset nama dropdown jika tidak ada keluarga yang dipilih
+                    namaSelect.prop('disabled', true).html(
+                        '<option value="">Pilih keluarga terlebih dahulu</option>');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

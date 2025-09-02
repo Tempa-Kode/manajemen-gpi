@@ -149,6 +149,9 @@ Route::post('permohonan/simpan', [App\Http\Controllers\PermohonanSuratController
 Route::put('permohonan/tolak/{id}', [App\Http\Controllers\PermohonanSuratController::class, 'tolakPermohonan'])
     ->middleware(['auth', 'admin'])
     ->name('permohonan-surat.tolak');
+Route::get('permohonan/anggota-keluarga', [App\Http\Controllers\PermohonanSuratController::class, 'getAnggotaKeluarga'])
+    ->middleware(['auth'])
+    ->name('permohonan-surat.anggota-keluarga');
 
 Route::prefix('/ucapan-syukur')->group(function () {
     Route::get('/', [App\Http\Controllers\UcapaSyukurController::class, 'index'])->middleware(['auth', 'admin'])->name('ucapan-syukur.index');

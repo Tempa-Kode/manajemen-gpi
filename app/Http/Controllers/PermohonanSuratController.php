@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\IsianSurat;
 use App\Models\SuratTerbit;
+use App\Models\Jemaat;
 use Illuminate\Http\Request;
 use App\Models\TemplateSurat;
 use App\Models\PermohonanSurat;
@@ -26,7 +27,11 @@ class PermohonanSuratController extends Controller
             ->with(['templateSurat'])
             ->latest()
             ->get();
-        return view('landing.form-permohonan-surat', compact('templates', 'permohonan'));
+
+        // Ambil data keluarga untuk dropdown
+        $keluarga = Jemaat::select('id', 'nama_keluarga')->orderBy('nama_keluarga')->get();
+        // dd($templates->nama_template);
+        return view('landing.form-permohonan-surat', compact('templates', 'permohonan', 'keluarga'));
     }
 
     public function simpanPermononanSurat(Request $request)
@@ -146,5 +151,59 @@ class PermohonanSuratController extends Controller
         $permohonan->update(['status' => 'ditolak']);
 
         return redirect()->route('permohonan-surat.index')->with('success', 'Permohonan surat berhasil ditolak.');
+    }
+
+    public function getAnggotaKeluarga(Request $request)
+    {
+        $keluargaId = $request->keluarga_id;
+        $jemaat = Jemaat::with(['remaja', 'sekolahMinggu'])->find($keluargaId);
+
+        if (!$jemaat) {
+            return response()->json(['error' => 'Keluarga tidak ditemukan'], 404);
+        }
+
+        $anggota = [];
+
+        // Tambahkan ayah jika masih hidup
+        if ($jemaat->ayah && !$jemaat->tgl_meninggal_ayah) {
+            $anggota[] = [
+                'nama' => $jemaat->ayah,
+                'kategori' => 'Ayah'
+            ];
+        }
+
+        // Tambahkan ibu jika masih hidup
+        if ($jemaat->ibu && !$jemaat->tgl_meninggal_ibu) {
+            $anggota[] = [
+                'nama' => $jemaat->ibu,
+                'kategori' => 'Ibu'
+            ];
+        }
+
+        // Tambahkan anak remaja yang statusnya aktif
+        foreach ($jemaat->remaja as $remaja) {
+            if ($remaja && !$remaja->tgl_meninggal) {
+                $anggota[] = [
+                    'nama' => $remaja->nama,
+                    'kategori' => 'Remaja'
+                ];
+            }
+        }
+
+        // Tambahkan anak sekolah minggu yang statusnya aktif
+        foreach ($jemaat->sekolahMinggu as $sm) {
+            if ($sm && !$sm->tgl_meninggal) {
+                $anggota[] = [
+                    'nama' => $sm->nama,
+                    'kategori' => 'Sekolah Minggu'
+                ];
+            }
+        }
+
+        return response()->json([
+            'success' => true,
+            'anggota' => $anggota,
+            'nama_keluarga' => $jemaat->nama_keluarga
+        ]);
     }
 }
