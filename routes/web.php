@@ -155,8 +155,8 @@ Route::get('permohonan/anggota-keluarga', [App\Http\Controllers\PermohonanSuratC
 
 Route::prefix('/ucapan-syukur')->group(function () {
     Route::get('/', [App\Http\Controllers\UcapaSyukurController::class, 'index'])->middleware(['auth', 'admin'])->name('ucapan-syukur.index');
-    Route::get('submit', [App\Http\Controllers\UcapaSyukurController::class, 'formUcapanSyukur'])->middleware(['auth', 'admin'])->name('ucapan-syukur.submit');
-    Route::post('submit', [App\Http\Controllers\UcapaSyukurController::class, 'submitUcapanSyukur'])->middleware(['auth', 'admin'])->name('ucapan-syukur.submit.post');
+    Route::get('submit', [App\Http\Controllers\UcapaSyukurController::class, 'formUcapanSyukur'])->name('ucapan-syukur.submit');
+    Route::post('submit', [App\Http\Controllers\UcapaSyukurController::class, 'submitUcapanSyukur'])->name('ucapan-syukur.submit.post');
     Route::put('terima/{id}', [App\Http\Controllers\UcapaSyukurController::class, 'terima'])->middleware(['auth', 'admin'])->name('ucapan-syukur.terima');
     Route::put('tolak/{id}', [App\Http\Controllers\UcapaSyukurController::class, 'tolak'])->middleware(['auth', 'admin'])->name('ucapan-syukur.tolak');
 });
