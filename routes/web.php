@@ -69,6 +69,9 @@ Route::resource('data-jemaat', App\Http\Controllers\DataJemaatController::class)
 Route::put('data-jemaat/keluar/{id}', [App\Http\Controllers\DataJemaatController::class, 'keluarDariAnggotaJemaat'])
     ->middleware(['auth', 'admin'])
     ->name('data-jemaat.keluar');
+Route::put('data-jemaat/reactivate/{id}', [App\Http\Controllers\DataJemaatController::class, 'reactivateAnggotaJemaat'])
+    ->middleware(['auth', 'admin'])
+    ->name('data-jemaat.reactivate');
 
 // Routes untuk mengelola tanggal kematian
 Route::put('data-jemaat/meninggal-ayah/{id}', [App\Http\Controllers\DataJemaatController::class, 'updateMeninggalAyah'])

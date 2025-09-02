@@ -251,4 +251,16 @@ class DataJemaatController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status ibu: ' . $e->getMessage());
         }
     }
+
+    public function reactivateAnggotaJemaat($id)
+    {
+        try {
+            $data = Jemaat::findOrFail($id);
+            $data->tgl_keluar = null;
+            $data->save();
+            return redirect()->route('data-jemaat.show', $data->id)->with('success', "Status anggota jemaat {$data->nama_keluarga} berhasil diaktifkan kembali.");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah status anggota jemaat: ' . $e->getMessage());
+        }
+    }
 }

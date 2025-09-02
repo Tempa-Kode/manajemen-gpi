@@ -281,6 +281,15 @@
                                                 <i class="fa-solid fa-door-open me-2"></i>Keluar Dari Anggota Jemaat
                                             </button>
                                         </form>
+                                    @else
+                                        <form action="{{ route("data-jemaat.reactivate", $data->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method("PUT")
+                                            <button type="submit" class="btn btn-outline-success btn-sm w-100">
+                                                <i class="fa-solid fa-door-open me-2"></i>Aktifkan Kembali
+                                            </button>
+                                        </form>
                                     @endif
                                     {{-- <button onclick="printData()" class="btn btn-outline-warning btn-sm">
                                     <i class="fas fa-file-pdf me-2"></i>Print Langsung
