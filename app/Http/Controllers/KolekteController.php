@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kolekte;
 use App\Models\JadwalIbadah;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class KolekteController extends Controller
@@ -16,7 +17,10 @@ class KolekteController extends Controller
 
     public function create()
     {
-        $jadwalIbadahs = JadwalIbadah::with('jenisIbadah')->get();
+        $jadwalIbadahs = JadwalIbadah::with('jenisIbadah')
+            ->whereHas('jenisIbadah', function (Builder $query) {
+                $query->where('jenis_ibadah', 'Ibadah Minggu Raya');
+            })->get();
         return view('halaman.kolekte.create', compact('jadwalIbadahs'));
     }
 
@@ -95,7 +99,7 @@ class KolekteController extends Controller
             $year = $parts[0];
             $month = ltrim($parts[1], '0'); // Remove leading zero
             $query->whereYear('tanggal_ibadah', $year)
-                  ->whereMonth('tanggal_ibadah', $month);
+                ->whereMonth('tanggal_ibadah', $month);
         } else {
             // Filter berdasarkan tahun
             $query->whereYear('tanggal_ibadah', $filterValue);
