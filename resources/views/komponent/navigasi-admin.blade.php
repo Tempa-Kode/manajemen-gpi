@@ -125,12 +125,21 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Keuangan</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(Route::currentRouteName(), 'kolekte') ? 'active' : '' }}" href="{{ route('kolekte.index') }}">
+                <a class="nav-link {{ str_contains(Route::currentRouteName(), 'kolekte.index') ? 'active' : '' }}" href="{{ route('kolekte.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-money-coins text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Kolekte</span>
+                    <span class="nav-link-text ms-1">Kolekte Ibadah Minggu Raya</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ str_contains(Route::currentRouteName(), 'kolekte-umum.index') ? 'active' : '' }}" href="{{ route('kolekte-umum.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-money-coins text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Kolekte Ibadah Umum</span>
                 </a>
             </li>
             <li class="nav-item">

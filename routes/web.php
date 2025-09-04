@@ -163,3 +163,7 @@ Route::prefix('/ucapan-syukur')->group(function () {
     Route::put('terima/{id}', [App\Http\Controllers\UcapaSyukurController::class, 'terima'])->middleware(['auth', 'admin'])->name('ucapan-syukur.terima');
     Route::put('tolak/{id}', [App\Http\Controllers\UcapaSyukurController::class, 'tolak'])->middleware(['auth', 'admin'])->name('ucapan-syukur.tolak');
 });
+
+Route::resource('kolekte-umum', App\Http\Controllers\KolekteUmumController::class)
+    ->middleware(['auth', 'admin'])
+    ->names('kolekte-umum');

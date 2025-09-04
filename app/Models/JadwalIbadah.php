@@ -39,4 +39,9 @@ class JadwalIbadah extends Model
     {
         return $this->hasMany(PendaftaranIbadah::class, 'jadwal_ibadah_id');
     }
+
+    public function kolekteUmum()
+    {
+        return $this->hasMany(KolekteUmum::class, 'jadwal_ibadah_id');
+    }
 }
