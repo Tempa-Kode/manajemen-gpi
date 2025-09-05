@@ -38,7 +38,7 @@
         <div class="card my-4 px-3">
             <div class="card-header pb-0">
                <div class="d-flex justify-content-between">
-                   <h4>Data Ucapan Syukur</h4>
+                   <h4>Data Kolekte Umum</h4>
                    <a href="{{ route('kolekte-umum.create') }}" class="btn btn-primary">Tambah Data</a>
                </div>
                 @if (session('success'))
