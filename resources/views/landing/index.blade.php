@@ -35,7 +35,10 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <section id="hero" class="hero section" style="background-image: url('{{ asset('landing/assets/img/hero-img.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+
+        <!-- Overlay untuk opacity dan gradien -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.5) 100%); z-index: 1;"></div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
