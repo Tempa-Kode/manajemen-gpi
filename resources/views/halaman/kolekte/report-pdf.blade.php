@@ -10,17 +10,38 @@
             margin: 20px;
         }
         .header {
-            text-align: center;
             margin-bottom: 30px;
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
         }
-        .header h1 {
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .header-table td {
+            border: none;
+            padding: 0;
+            vertical-align: middle;
+        }
+        .logo-cell {
+            width: 15%;
+            text-align: left;
+        }
+        .logo-cell img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .title-cell {
+            width: 85%;
+            text-align: center;
+        }
+        .title-cell h1 {
             margin: 0;
             color: #333;
             font-size: 18px;
         }
-        .header h2 {
+        .title-cell h2 {
             margin: 5px 0 0 0;
             color: #666;
             font-size: 14px;
@@ -80,13 +101,72 @@
             font-size: 10px;
             color: #666;
         }
+        .signature-section {
+            margin-top: 40px;
+            page-break-inside: avoid;
+        }
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .signature-table td {
+            border: none;
+            vertical-align: top;
+        }
+        .signature-left {
+            width: 50%;
+        }
+        .signature-right {
+            width: 50%;
+            text-align: center;
+            padding-left: 20px;
+        }
+        .signature-content p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #333;
+        }
+        .signature-title {
+            font-weight: bold;
+            margin-bottom: 10px !important;
+        }
+        .signature-space {
+            height: 60px;
+            margin: 15px 0;
+        }
+        .signature-space img {
+            margin-top: -20px;
+            width: 50%;
+            /* height: 100%; */
+            object-fit: contain;
+        }
+        .signature-name {
+            /* border-bottom: 1px solid #333; */
+            margin: 0 20px;
+            padding-bottom: 2px;
+            font-weight: bold;
+        }
+        .signature-subtitle {
+            font-size: 10px !important;
+            color: #666;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>GEREJA PENTAKOSTA INDONESIA</h1>
-        <h2>SIDANG PERAWANG</h2>
-        <h2>LAPORAN KOLEKTE</h2>
+        <table class="header-table">
+            <tr>
+                <td class="logo-cell">
+                    <img src="{{ public_path('assets/img/logo-gpi.png') }}" alt="Logo GPI">
+                </td>
+                <td class="title-cell">
+                    <h1>GEREJA PENTAKOSTA INDONESIA</h1>
+                    <h2>SIDANG PERAWANG</h2>
+                    <h2>LAPORAN KOLEKTE</h2>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div class="period">
@@ -173,6 +253,24 @@
 
     <div class="footer">
         Dicetak pada: {{ now()->locale('id')->isoFormat('dddd, D MMMM Y HH:mm') }} WIB
+    </div>
+
+    <div class="signature-section">
+        <table class="signature-table">
+            <tr>
+                <td class="signature-left"></td>
+                <td class="signature-right">
+                    <div class="signature-content">
+                        <p>Perawang, {{ now()->locale('id')->isoFormat('D MMMM Y') }}</p>
+                        <p class="signature-title">Bendahara Gereja</p>
+                        <div class="signature-space">
+                            <img src="{{ public_path('assets/img/ttd-bendahara.png') }}" alt="Logo GPI">
+                        </div>
+                        <p class="signature-name">(NONSTA SITINJAK)</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

@@ -128,7 +128,7 @@ class KolekteController extends Controller
 
             $filename = 'laporan-kolekte-' . str_replace('-', '_', $filterValue) . '.pdf';
 
-            return $pdf->download($filename);
+            return $pdf->stream($filename);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal membuat PDF: ' . $e->getMessage());
         }
