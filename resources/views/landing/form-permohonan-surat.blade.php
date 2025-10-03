@@ -392,8 +392,7 @@
                                                             <input type="hidden" name="nama_field[]" value="ttl">
                                                             <input type="text" class="form-control" id="ttl"
                                                                 name="isi_field[]"
-                                                                placeholder="Contoh: Medan, 15 Januari 1990"
-                                                                required>
+                                                                placeholder="Contoh: Medan, 15 Januari 1990" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -523,7 +522,7 @@
                     <div class="footer-contact pt-3">
                         <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
                         <p>Kabupanten Siak, Riau</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+62 853 0875 8765</span></p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>082267087169</span></p>
                         <p><strong>Email:</strong> <span>info@gpi.org</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">

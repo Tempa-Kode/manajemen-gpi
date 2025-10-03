@@ -83,43 +83,57 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                    <h3>Profil GPI Sidang Perawang</h3>
-                    <p>
-                        Gereja Pentakosta Indonesia Sidang Perawang adalah bagian dari Gereja Pentakosta
-                        Indonesia yang berfokus pada pengembangan iman Kristen di wilayah Perawang, Riau.
-                        Gereja ini berada di Kecamatan Tualang Kabupaten Siak. Lebih tepatnya beralamatkan di Jln.
-                        Pery No.36, KM 3 Perawang, dengan kode pos 28772. Jumlah jemaat Gereja Pentakosta
-                        Indonesia Sidang perawang saat ini ada 46 KK. Yang mana, keseluruhannya jemaatnya dari
-                        orang tua dan anak-anak mencapai 230 jiwa. Berikut adalah gambar atau foto dari Gereja
-                        Pentakosta Indonesia Sidang Perawang.
-                    </p>
+                    <h3 class="fw-bold">Profil GPI Sidang Perawang</h3>
+                    <div class="row mt-2">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <img src="{{ asset('landing/assets/img/ibadah.jpeg') }}" class="img-thumbnail w-70" alt="profil gereja">
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                Gereja Pentakosta Indonesia Sidang Perawang adalah bagian dari Gereja Pentakosta
+                                Indonesia yang berfokus pada pengembangan iman Kristen di wilayah Perawang, Riau.
+                                Gereja ini berada di Kecamatan Tualang Kabupaten Siak. Lebih tepatnya beralamatkan di Jln.
+                                Pery No.36, KM 3 Perawang, dengan kode pos 28772. Jumlah jemaat Gereja Pentakosta
+                                Indonesia Sidang perawang saat ini ada 46 KK. Yang mana, keseluruhannya jemaatnya dari
+                                orang tua dan anak-anak mencapai 230 jiwa. Berikut adalah gambar atau foto dari Gereja
+                                Pentakosta Indonesia Sidang Perawang.
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade p-3" id="sejarah-tab-pane" role="tabpanel" aria-labelledby="sejarah-tab" tabindex="0">
                     <h3>Sejarah Gereja Pentakosta Indonesia (GPI) Sidang Perawang</h3>
-                    <p>
-                        April tahun 1995 Gereja Pentakosta Indonesia (GPI) Sidang Perawang memulai
-                        kegiatan gereja dari ibadah yang dilakukan di rumah-rumah jemaat. Dikarenakan, terbatasnya
-                        tempat atau bangunan gereja yang pada saat itu belum ada. Selama setahun lebih ibadah dan
-                        kegiatan gereja hanya dilakukan dirumah jemaat saja. Sampai akhirnya di bulan Agustus
-                        1996 dimulailah pembangunan gereja ini.
-                    </p>
-                    <p>
-                        GPI Sidang Perawang ini didirikan dimulai dengan bangunan yang sangat sederhana.
-                        Yang pada saat itu dibangun di atas lahan bergambut dan berlumpur yang masih digenangi
-                        air. Dibangun diatas dengan menggunakan tiang balok kayu. Pada saat itu juga gereja bisa
-                        berdiri masih menggunakan papan yang sangat sederhana. Seiring berjalannya waktu,
-                        pembangunan gereja ini semakin maju. Oleh karena semangat Pentakosta, para umat Tuhan
-                        semakin dan tetap setia melayani Tuhan. Karena sukacita para jemaat GPI Sidang Perawang
-                        semakin berlimpah, dan oleh berkat Tuhan, dimulailah dengan pembangunan selanjutnya.
-                    </p>
-                    <p>
-                        September 1996 ibadah gereja sudah di lakukan langsung di Gereja dengan bangunan
-                        yang sangat sederhana sampai dengan saat ini. Seluruh aktivitas kegiatan pelayanan gereja
-                        juga sudah mulai dilakukan di gereja. Pada tahun 1998 tepatnya di bulan November
-                        dimulailah pembangunan tahap kedua. Bangunan gereja ini dibuat untuk bangunan permanen.
-                        Mulai dibangun menggunakan beton dan dibuat memakai Plafon Olympic. Lantai gereja juga
-                        sudah memakai keramik
-                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset('landing/assets/img/gereja.jpg') }}" class="img-thumbnail w-70" alt="profil gereja">
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                April tahun 1995 Gereja Pentakosta Indonesia (GPI) Sidang Perawang memulai
+                                kegiatan gereja dari ibadah yang dilakukan di rumah-rumah jemaat. Dikarenakan, terbatasnya
+                                tempat atau bangunan gereja yang pada saat itu belum ada. Selama setahun lebih ibadah dan
+                                kegiatan gereja hanya dilakukan dirumah jemaat saja. Sampai akhirnya di bulan Agustus
+                                1996 dimulailah pembangunan gereja ini.
+                            </p>
+                            <p>
+                                GPI Sidang Perawang ini didirikan dimulai dengan bangunan yang sangat sederhana.
+                                Yang pada saat itu dibangun di atas lahan bergambut dan berlumpur yang masih digenangi
+                                air. Dibangun diatas dengan menggunakan tiang balok kayu. Pada saat itu juga gereja bisa
+                                berdiri masih menggunakan papan yang sangat sederhana. Seiring berjalannya waktu,
+                                pembangunan gereja ini semakin maju. Oleh karena semangat Pentakosta, para umat Tuhan
+                                semakin dan tetap setia melayani Tuhan. Karena sukacita para jemaat GPI Sidang Perawang
+                                semakin berlimpah, dan oleh berkat Tuhan, dimulailah dengan pembangunan selanjutnya.
+                            </p>
+                            <p>
+                                September 1996 ibadah gereja sudah di lakukan langsung di Gereja dengan bangunan
+                                yang sangat sederhana sampai dengan saat ini. Seluruh aktivitas kegiatan pelayanan gereja
+                                juga sudah mulai dilakukan di gereja. Pada tahun 1998 tepatnya di bulan November
+                                dimulailah pembangunan tahap kedua. Bangunan gereja ini dibuat untuk bangunan permanen.
+                                Mulai dibangun menggunakan beton dan dibuat memakai Plafon Olympic. Lantai gereja juga
+                                sudah memakai keramik
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade p-3" id="visi-tab-pane" role="tabpanel" aria-labelledby="visi-tab" tabindex="0">
                     <h3 class="mb-4">Visi dan Misi GPI Sidang Perawang</h3>
@@ -195,8 +209,8 @@
                                     </div>
                                     <h5 class="card-title text-info">Nomor Telepon</h5>
                                     <p class="card-text">
-                                        <a href="tel:088271082604" class="text-decoration-none">
-                                            <strong>088271082604</strong>
+                                        <a href="tel:082267087169" class="text-decoration-none">
+                                            <strong>082267087169</strong>
                                         </a>
                                     </p>
                                 </div>
@@ -250,7 +264,7 @@
           <div class="footer-contact pt-3">
             <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
             <p>Kabupanten Siak, Riau</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+62 853 0875 8765</span></p>
+            <p class="mt-3"><strong>Phone:</strong> <span>082267087169</span></p>
             <p><strong>Email:</strong> <span>info@gpi.org</span></p>
           </div>
           <div class="social-links d-flex mt-4">
