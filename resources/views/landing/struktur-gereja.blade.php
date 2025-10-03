@@ -31,7 +31,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <style>
+    {{-- <style>
         .structure-container {
             background: #f8f9fa;
             padding: 60px 0;
@@ -223,7 +223,7 @@
                 max-width: 180px;
             }
         }
-    </style>
+    </style> --}}
 </head>
 
 <body class="starter-page-page">
@@ -248,8 +248,8 @@
         <!-- Structure Section -->
         <section class="structure-container">
             <div class="container">
-
-                <!-- Organizational Chart -->
+                <img src="{{ asset('landing/assets/img/struktur-organisasi.svg') }}" class="img-fluid mx-auto d-block" alt="Struktur Gereja" srcset="">
+                {{-- <!-- Organizational Chart -->
                 <div class="row" data-aos="fade-up">
                     <div class="col-12">
                         <div class="org-chart">
@@ -305,7 +305,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </section><!-- End Structure Section -->
