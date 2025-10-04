@@ -167,3 +167,8 @@ Route::prefix('/ucapan-syukur')->group(function () {
 Route::resource('kolekte-umum', App\Http\Controllers\KolekteUmumController::class)
     ->middleware(['auth', 'admin'])
     ->names('kolekte-umum');
+
+Route::prefix('/saran-masukan')->group(function () {
+    Route::get('/', [App\Http\Controllers\SaranMasukanController::class, 'index'])->middleware(['auth', 'admin'])->name('saran-masukan.index');
+    Route::post('submit', [App\Http\Controllers\SaranMasukanController::class, 'store'])->name('saran-masukan.submit');
+});
