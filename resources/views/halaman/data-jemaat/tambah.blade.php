@@ -47,9 +47,37 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="tempat_lahir_ayah" class="form-control-label">Tempat Lahir Ayah</label>
+                        <input class="form-control" type="text" name="tempat_lahir_ayah" id="tempat_lahir_ayah" value="{{ old('tempat_lahir_ayah') }}">
+                        @error('tempat_lahir_ayah')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_lahir_ayah" class="form-control-label">Tanggal Lahir Ayah</label>
+                        <input class="form-control" type="date" name="tgl_lahir_ayah" id="tgl_lahir_ayah" value="{{ old('tgl_lahir_ayah') }}">
+                        @error('tgl_lahir_ayah')
+                        <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="ibu" class="form-control-label">Ibu</label>
                         <input class="form-control" type="text" name="ibu" id="ibu" value="{{ old('ibu') }}">
                         @error('ibu')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tempat_lahir_ibu" class="form-control-label">Tempat Lahir Ibu</label>
+                        <input class="form-control" type="text" name="tempat_lahir_ibu" id="tempat_lahir_ibu" value="{{ old('tempat_lahir_ibu') }}">
+                        @error('tempat_lahir_ibu')
+                            <span class="text-danger fst-italic">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_lahir_ibu" class="form-control-label">Tanggal Lahir Ibu</label>
+                        <input class="form-control" type="date" name="tgl_lahir_ibu" id="tgl_lahir_ibu" value="{{ old('tgl_lahir_ibu') }}">
+                        @error('tgl_lahir_ibu')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror
                     </div>
