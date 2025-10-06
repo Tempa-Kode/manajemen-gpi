@@ -393,6 +393,10 @@
                                                             <input type="text" class="form-control" id="ttl"
                                                                 name="isi_field[]"
                                                                 placeholder="Contoh: Medan, 15 Januari 1990" required>
+                                                            <small class="form-text text-muted">
+                                                                <i class="fas fa-info-circle"></i>
+                                                                Data akan terisi otomatis saat memilih nama
+                                                            </small>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -407,105 +411,118 @@
                                                                 <option value="Laki-laki">Laki-laki</option>
                                                                 <option value="Perempuan">Perempuan</option>
                                                             </select>
+                                                            <small class="form-text text-muted">
+                                                                <i class="fas fa-info-circle"></i>
+                                                                Data akan terisi otomatis saat memilih nama
+                                                            </small>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="alert alert-info">
-                                                    <i class="fas fa-info-circle me-2"></i>
-                                                    <strong>Informasi:</strong> Surat keterangan ini akan dibuat sesuai
-                                                    format resmi Gereja Pentakosta Indonesia Sidang Perawang.
-                                                </div>
-                                            @else
-                                                {{-- Field dinamis untuk template lainnya --}}
-                                                @foreach ($templates->isianTemplates as $field)
-                                                    @if ($field->nama_field !== "nomor")
-                                                        <div class="mb-3">
-                                                            <label for="{{ $field->nama_field }}"
-                                                                class="form-label">{{ $field->label }}</label>
-                                                            <input type="hidden" name="nama_field[]"
-                                                                value="{{ $field->nama_field }}">
-                                                            @if ($field->tipe == "textarea")
-                                                                <textarea class="form-control" id="{{ $field->nama_field }}" name="isi_field[]" rows="4"
-                                                                    placeholder="Masukkan {{ strtolower($field->label) }}"></textarea>
-                                                            @elseif($field->tipe == "select")
-                                                                <select class="form-control"
-                                                                    id="{{ $field->nama_field }}" name="isi_field[]">
-                                                                    <option value="">Pilih {{ $field->label }}
-                                                                    </option>
-                                                                    {{-- Tambahkan option sesuai kebutuhan --}}
-                                                                </select>
-                                                            @else
-                                                                <input type="{{ $field->tipe }}"
-                                                                    class="form-control"
-                                                                    id="{{ $field->nama_field }}" name="isi_field[]"
-                                                                    placeholder="Masukkan {{ strtolower($field->label) }}">
-                                                            @endif
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-
-                                            <button type="submit" class="btn btn-success float-end">
-                                                <i class="fas fa-paper-plane me-2"></i>Kirim Permohonan
-                                            </button>
-                                        </form>
-                                    @else
-                                        <p>Silakan pilih jenis surat yang ingin Anda buat:</p>
-                                        <ul>
-                                            @foreach ($templates as $template)
-                                                <li>
-                                                    <a href="{{ route("permohonan-surat.form", ["id" => $template->id]) }}"
-                                                        class="text-dark">
-                                                        {{ $template->nama_template }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
+                                                {{-- Kelamin <span class="text-danger">*</span></label>
+                                                <input type="hidden" name="nama_field[]" value="jenis-kelamin">
+                                                <select class="form-control" id="jenis-kelamin" name="isi_field[]"
+                                                    required>
+                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
+                                                </select> --}}
                                 </div>
                             </div>
-                            <div class="table-responsive px-3">
-                                <hr>
-                                <h4 class="text-center text-uppercase">Surat Yang Pernah Di Ajukan</h4>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Surat</th>
-                                            <th scope="col">Nomor Surat</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Tanggal</th>
-                                            <th scope="col">Keterangan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($permohonan as $item)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->templateSurat->nama_template }}</td>
-                                                <td>{{ $item->status == "disetujui" ? $item->suratTerbit->nomor_surat : "-" }}
-                                                </td>
-                                                <td><span
-                                                        class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span>
-                                                </td>
-                                                <td>{{ $item->created_at->diffForHumans() }}</td>
-                                                <td>
-                                                    @if ($item->status == "disetujui")
-                                                        Silahkan ambil di kantor gereja.
-                                                    @else
-                                                        Belum Tersedia
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-
-                                </table>
-                            </div>
                         </div>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Informasi:</strong> Surat keterangan ini akan dibuat sesuai
+                            format resmi Gereja Pentakosta Indonesia Sidang Perawang.
+                        </div>
+                    @else
+                        {{-- Field dinamis untuk template lainnya --}}
+                        @foreach ($templates->isianTemplates as $field)
+                            @if ($field->nama_field !== "nomor")
+                                <div class="mb-3">
+                                    <label for="{{ $field->nama_field }}"
+                                        class="form-label">{{ $field->label }}</label>
+                                    <input type="hidden" name="nama_field[]" value="{{ $field->nama_field }}">
+                                    @if ($field->tipe == "textarea")
+                                        <textarea class="form-control" id="{{ $field->nama_field }}" name="isi_field[]" rows="4"
+                                            placeholder="Masukkan {{ strtolower($field->label) }}"></textarea>
+                                    @elseif($field->tipe == "select")
+                                        <select class="form-control" id="{{ $field->nama_field }}"
+                                            name="isi_field[]">
+                                            <option value="">Pilih {{ $field->label }}
+                                            </option>
+                                            {{-- Tambahkan option sesuai kebutuhan --}}
+                                        </select>
+                                    @else
+                                        <input type="{{ $field->tipe }}" class="form-control"
+                                            id="{{ $field->nama_field }}" name="isi_field[]"
+                                            placeholder="Masukkan {{ strtolower($field->label) }}">
+                                    @endif
+                                </div>
+                            @endif
+                        @endforeach
+                        @endif
 
+                        <button type="submit" class="btn btn-success float-end">
+                            <i class="fas fa-paper-plane me-2"></i>Kirim Permohonan
+                        </button>
+                        </form>
+                    @else
+                        <p>Silakan pilih jenis surat yang ingin Anda buat:</p>
+                        <ul>
+                            @foreach ($templates as $template)
+                                <li>
+                                    <a href="{{ route("permohonan-surat.form", ["id" => $template->id]) }}"
+                                        class="text-dark">
+                                        {{ $template->nama_template }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </div>
                 </div>
+                <div class="table-responsive px-3">
+                    <hr>
+                    <h4 class="text-center text-uppercase">Surat Yang Pernah Di Ajukan</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Surat</th>
+                                <th scope="col">Nomor Surat</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($permohonan as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->templateSurat->nama_template }}</td>
+                                    <td>{{ $item->status == "disetujui" ? $item->suratTerbit->nomor_surat : "-" }}
+                                    </td>
+                                    <td><span
+                                            class="badge rounded-pill text-bg-info text-uppercase">{{ $item->status }}</span>
+                                    </td>
+                                    <td>{{ $item->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        @if ($item->status == "disetujui")
+                                            Silahkan ambil di kantor gereja.
+                                        @else
+                                            Belum Tersedia
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            </div>
+            </div>
             </div>
         </section><!-- End Warta Detail Section -->
 
@@ -580,6 +597,9 @@
                 }
             });
 
+            // Variabel untuk menyimpan data anggota keluarga
+            let anggotaData = {};
+
             // Event listener untuk dropdown keluarga
             $('#nama-keluarga').on('change', function() {
                 const keluargaId = $(this).find('option:selected').data('id');
@@ -588,6 +608,10 @@
                 if (keluargaId) {
                     // Reset dan disable nama dropdown
                     namaSelect.prop('disabled', true).html('<option value="">Memuat...</option>');
+
+                    // Reset form fields
+                    $('#ttl').val('');
+                    $('#jenis-kelamin').val('');
 
                     // AJAX request untuk mendapatkan anggota keluarga
                     $.ajax({
@@ -601,10 +625,21 @@
                                 namaSelect.html(
                                     '<option value="">Pilih Anggota Keluarga</option>');
 
+                                // Reset data anggota
+                                anggotaData = {};
+
                                 // Tambahkan option untuk setiap anggota keluarga
-                                response.anggota.forEach(function(anggota) {
+                                response.anggota.forEach(function(anggota, index) {
+                                    // Simpan data lengkap anggota
+                                    anggotaData[anggota.nama] = {
+                                        jenis_kelamin: anggota.jenis_kelamin,
+                                        tempat_lahir: anggota.tempat_lahir,
+                                        tanggal_lahir: anggota.tanggal_lahir,
+                                        ttl: anggota.ttl
+                                    };
+
                                     namaSelect.append(
-                                        `<option value="${anggota.nama}">${anggota.nama} (${anggota.kategori})</option>`
+                                        `<option value="${anggota.nama}" data-index="${index}">${anggota.nama} (${anggota.kategori})</option>`
                                     );
                                 });
 
@@ -624,10 +659,57 @@
                     // Reset nama dropdown jika tidak ada keluarga yang dipilih
                     namaSelect.prop('disabled', true).html(
                         '<option value="">Pilih keluarga terlebih dahulu</option>');
+
+                    // Reset form fields
+                    $('#ttl').val('');
+                    $('#jenis-kelamin').val('');
+                    anggotaData = {};
+                }
+            });
+
+            // Event listener untuk dropdown nama - Auto fill data
+            $('#nama').on('change', function() {
+                const selectedNama = $(this).val();
+
+                if (selectedNama && anggotaData[selectedNama]) {
+                    const data = anggotaData[selectedNama];
+
+                    // Auto fill jenis kelamin
+                    $('#jenis-kelamin').val(data.jenis_kelamin);
+
+                    // Auto fill tempat tanggal lahir
+                    if (data.ttl) {
+                        $('#ttl').val(data.ttl);
+                    } else {
+                        $('#ttl').val('');
+                    }
+
+                    // Berikan feedback visual bahwa data telah terisi otomatis
+                    $('#jenis-kelamin, #ttl').addClass('auto-filled');
+                    setTimeout(function() {
+                        $('#jenis-kelamin, #ttl').removeClass('auto-filled');
+                    }, 2000);
+                } else {
+                    // Reset fields jika nama tidak dipilih
+                    $('#jenis-kelamin').val('');
+                    $('#ttl').val('');
                 }
             });
         });
     </script>
+
+    <style>
+        .auto-filled {
+            background-color: #e8f5e8 !important;
+            border-color: #28a745 !important;
+            transition: all 0.3s ease;
+        }
+
+        .form-text.text-success {
+            color: #28a745 !important;
+            font-weight: 500;
+        }
+    </style>
 </body>
 
 </html>

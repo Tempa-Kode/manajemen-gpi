@@ -31,6 +31,8 @@ class Jemaat extends Model
         'tgl_keluar' => 'date',
         'tgl_meninggal_ayah' => 'date',
         'tgl_meninggal_ibu' => 'date',
+        'tgl_lahir_ayah' => 'date',
+        'tgl_lahir_ibu' => 'date',
     ];
 
     // Relationship dengan SekolahMinggu

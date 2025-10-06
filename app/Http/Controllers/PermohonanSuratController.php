@@ -11,6 +11,7 @@ use App\Models\PermohonanSurat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SuratTerbitController;
+use Carbon\Carbon;
 
 class PermohonanSuratController extends Controller
 {
@@ -168,7 +169,13 @@ class PermohonanSuratController extends Controller
         if ($jemaat->ayah && !$jemaat->tgl_meninggal_ayah) {
             $anggota[] = [
                 'nama' => $jemaat->ayah,
-                'kategori' => 'Ayah'
+                'kategori' => 'Ayah',
+                'jenis_kelamin' => 'Laki-laki',
+                'tempat_lahir' => $jemaat->tempat_lahir_ayah ?? '',
+                'tanggal_lahir' => $jemaat->tgl_lahir_ayah ? \Carbon\Carbon::parse($jemaat->tgl_lahir_ayah)->format('d/m/Y') : '',
+                'ttl' => ($jemaat->tempat_lahir_ayah && $jemaat->tgl_lahir_ayah)
+                        ? $jemaat->tempat_lahir_ayah . ', ' . \Carbon\Carbon::parse($jemaat->tgl_lahir_ayah)->translatedFormat('d F Y')
+                        : ''
             ];
         }
 
@@ -176,7 +183,13 @@ class PermohonanSuratController extends Controller
         if ($jemaat->ibu && !$jemaat->tgl_meninggal_ibu) {
             $anggota[] = [
                 'nama' => $jemaat->ibu,
-                'kategori' => 'Ibu'
+                'kategori' => 'Ibu',
+                'jenis_kelamin' => 'Perempuan',
+                'tempat_lahir' => $jemaat->tempat_lahir_ibu ?? '',
+                'tanggal_lahir' => $jemaat->tgl_lahir_ibu ? \Carbon\Carbon::parse($jemaat->tgl_lahir_ibu)->format('d/m/Y') : '',
+                'ttl' => ($jemaat->tempat_lahir_ibu && $jemaat->tgl_lahir_ibu)
+                        ? $jemaat->tempat_lahir_ibu . ', ' . \Carbon\Carbon::parse($jemaat->tgl_lahir_ibu)->translatedFormat('d F Y')
+                        : ''
             ];
         }
 
@@ -185,7 +198,13 @@ class PermohonanSuratController extends Controller
             if ($remaja && !$remaja->tgl_meninggal) {
                 $anggota[] = [
                     'nama' => $remaja->nama,
-                    'kategori' => 'Remaja'
+                    'kategori' => 'Remaja',
+                    'jenis_kelamin' => $remaja->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan',
+                    'tempat_lahir' => $remaja->tempat_lahir ?? '',
+                    'tanggal_lahir' => $remaja->tanggal_lahir ? \Carbon\Carbon::parse($remaja->tanggal_lahir)->format('d/m/Y') : '',
+                    'ttl' => ($remaja->tempat_lahir && $remaja->tanggal_lahir)
+                            ? $remaja->tempat_lahir . ', ' . \Carbon\Carbon::parse($remaja->tanggal_lahir)->translatedFormat('d F Y')
+                            : ''
                 ];
             }
         }
@@ -195,7 +214,13 @@ class PermohonanSuratController extends Controller
             if ($sm && !$sm->tgl_meninggal) {
                 $anggota[] = [
                     'nama' => $sm->nama,
-                    'kategori' => 'Sekolah Minggu'
+                    'kategori' => 'Sekolah Minggu',
+                    'jenis_kelamin' => $sm->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan',
+                    'tempat_lahir' => $sm->tempat_lahir ?? '',
+                    'tanggal_lahir' => $sm->tanggal_lahir ? \Carbon\Carbon::parse($sm->tanggal_lahir)->format('d/m/Y') : '',
+                    'ttl' => ($sm->tempat_lahir && $sm->tanggal_lahir)
+                            ? $sm->tempat_lahir . ', ' . \Carbon\Carbon::parse($sm->tanggal_lahir)->translatedFormat('d F Y')
+                            : ''
                 ];
             }
         }
