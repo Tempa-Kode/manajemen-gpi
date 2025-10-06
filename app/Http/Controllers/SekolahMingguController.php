@@ -35,6 +35,8 @@ class SekolahMingguController extends Controller
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
             'kelas' => 'nullable|string|max:50',
         ], [
             'id_kk.required' => 'Keluarga harus dipilih.',
@@ -43,6 +45,9 @@ class SekolahMingguController extends Controller
             'nama.max' => 'Nama anak maksimal 255 karakter.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
+            'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+            'tempat_lahir.max' => 'Tempat lahir maksimal 100 karakter.',
+            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
             'kelas.max' => 'Kelas maksimal 50 karakter.',
         ]);
 
@@ -81,6 +86,8 @@ class SekolahMingguController extends Controller
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
             'kelas' => 'nullable|string|max:50',
         ], [
             'id_kk.required' => 'Keluarga harus dipilih.',
@@ -89,6 +96,9 @@ class SekolahMingguController extends Controller
             'nama.max' => 'Nama anak maksimal 255 karakter.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
+            'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+            'tempat_lahir.max' => 'Tempat lahir maksimal 100 karakter.',
+            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
             'kelas.max' => 'Kelas maksimal 50 karakter.',
         ]);
 

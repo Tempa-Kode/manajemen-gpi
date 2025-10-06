@@ -53,6 +53,10 @@
                                         <td>{{ $sekolahMinggu->jenis_kelamin == "L" ? "Laki-laki" : "Perempuan" }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Tempat & Tgl Lahir</th>
+                                        <td>{{ ($sekolahMinggu->tempat_lahir && $sekolahMinggu->tanggal_lahir) ? $sekolahMinggu->tempat_lahir . ', ' . \Carbon\Carbon::parse($sekolahMinggu->tanggal_lahir)->locale('id')->translatedFormat('d F Y') : 'Belum diisi' }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Kelas</th>
                                         <td>{{ $sekolahMinggu->kelas ?? "-" }}</td>
                                     </tr>
