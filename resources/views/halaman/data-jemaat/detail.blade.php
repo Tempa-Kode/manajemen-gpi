@@ -117,6 +117,19 @@
                                         </small>
                                     @endif
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-bold">
+                                        Tempat & Tgl Lahir Ayah
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-calendar text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 bg-light" readonly
+                                                     value="{{ ($data->tempat_lahir_ayah && $data->tgl_lahir_ayah) ? $data->tempat_lahir_ayah . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ayah)->format('d F Y') : 'Belum diisi' }}"
+                                                     style="{{ (empty($data->tempat_lahir_ayah) || empty($data->tgl_lahir_ayah)) ? 'font-style: italic; color: #6c757d;' : '' }}">
+                                    </div>
+                                </div>
                             </div> <!-- Nama Ibu -->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -143,6 +156,19 @@
                                             Meninggal: {{ $data->tgl_meninggal_ibu->format("d F Y") }}
                                         </small>
                                     @endif
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-bold">
+                                        Tempat & Tgl Lahir Ibu
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="fas fa-calendar text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 bg-light" readonly
+                                           value="{{ ($data->tempat_lahir_ibu && $data->tgl_lahir_ibu) ? $data->tempat_lahir_ibu . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ibu)->format('d F Y') : 'Belum diisi' }}"
+                                           style="{{ (empty($data->tempat_lahir_ibu) || empty($data->tgl_lahir_ibu)) ? 'font-style: italic; color: #6c757d;' : '' }}">
+                                    </div>
                                 </div>
                             </div>
 

@@ -11,7 +11,7 @@
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">
+                        <h4 class="mb-0 text-white">
                             <i class="fas fa-edit me-2"></i>
                             Edit Data Jemaat
                         </h4>
@@ -99,6 +99,36 @@
                                         <span class="text-danger fst-italic">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="tempat_lahir_ayah" class="form-label fw-bold">
+                                        Tempat Lahir Ayah
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <input class="form-control" type="text" name="tempat_lahir_ayah" id="tempat_lahir_ayah"
+                                               value="{{ old('tempat_lahir_ayah', $data->tempat_lahir_ayah ?? "-") }}">
+                                    </div>
+                                    @error('tempat_lahir_ayah')
+                                        <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="tgl_lahir_ayah" class="form-label fw-bold">
+                                        Tanggal Lahir Ayah
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <input class="form-control" type="date" name="tgl_lahir_ayah" id="tgl_lahir_ayah"
+                                               value="{{ old('tgl_lahir_ayah', $data->tgl_lahir_ayah) }}">
+                                    </div>
+                                    @error('tgl_lahir_ayah')
+                                    <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <!-- Nama Ibu -->
@@ -115,6 +145,36 @@
                                                value="{{ old('ibu', $data->ibu) }}">
                                     </div>
                                     @error('ibu')
+                                        <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="tempat_lahir_ibu" class="form-label fw-bold">
+                                        Tempat Lahir Ibu
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <input class="form-control" type="text" name="tempat_lahir_ibu" id="tempat_lahir_ibu"
+                                               value="{{ old('tempat_lahir_ibu', $data->tempat_lahir_ibu ?? "-") }}">
+                                    </div>
+                                    @error('tempat_lahir_ibu')
+                                        <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="tgl_lahir_ibu" class="form-label fw-bold">
+                                        Tanggal Lahir Ibu
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <input class="form-control" type="date" name="tgl_lahir_ibu" id="tgl_lahir_ibu"
+                                               value="{{ old('tgl_lahir_ibu', $data->tgl_lahir_ibu) }}">
+                                    </div>
+                                    @error('tgl_lahir_ibu')
                                         <span class="text-danger fst-italic">{{ $message }}</span>
                                     @enderror
                                 </div>
