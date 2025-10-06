@@ -53,6 +53,10 @@
                                         <td>{{ $remaja->jenis_kelamin == "L" ? "Laki-laki" : "Perempuan" }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Tempat & Tgl Lahir</th>
+                                        <td>{{ ($remaja->tempat_lahir && $remaja->tanggal_lahir) ? $remaja->tempat_lahir . ', ' . \Carbon\Carbon::parse($remaja->tanggal_lahir)->locale('id')->translatedFormat('d F Y') : 'Belum diisi' }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Pendidikan</th>
                                         <td>{{ $remaja->pendidikan ?? "-" }}</td>
                                     </tr>

@@ -110,6 +110,44 @@
                                 </div>
                             </div>
 
+                            <!-- Tempat Lahir -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tempat_lahir" class="form-label fw-bold">
+                                        <i class="fas fa-location text-success me-2"></i>Tempat Lahir
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-location"></i>
+                                        </span>
+                                        <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir"
+                                               value="{{ old('tempat_lahir') }}" required>
+                                    </div>
+                                    @error('tempat_lahir')
+                                    <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Tanggal Lahir -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tanggal_lahir" class="form-label fw-bold">
+                                        <i class="fas fa-calendar text-success me-2"></i>Tanggal Lahir
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                        <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir"
+                                               value="{{ old('tanggal_lahir') }}" required>
+                                    </div>
+                                    @error('tanggal_lahir')
+                                    <span class="text-danger fst-italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <!-- Pendidikan -->
                             <div class="col-md-6">
                                 <div class="form-group">

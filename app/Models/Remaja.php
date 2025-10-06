@@ -14,6 +14,8 @@ class Remaja extends Model
         'nama',
         'tanggal_lahir',
         'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
         'pendidikan',
         'pekerjaan',
         'tgl_meninggal',

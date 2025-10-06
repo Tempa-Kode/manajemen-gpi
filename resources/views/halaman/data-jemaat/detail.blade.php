@@ -126,7 +126,7 @@
                                             <i class="fas fa-calendar text-muted"></i>
                                         </span>
                                         <input type="text" class="form-control border-start-0 bg-light" readonly
-                                                     value="{{ ($data->tempat_lahir_ayah && $data->tgl_lahir_ayah) ? $data->tempat_lahir_ayah . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ayah)->format('d F Y') : 'Belum diisi' }}"
+                                                     value="{{ ($data->tempat_lahir_ayah && $data->tgl_lahir_ayah) ? $data->tempat_lahir_ayah . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ayah)->locale('id')->translatedFormat('d F Y') : 'Belum diisi' }}"
                                                      style="{{ (empty($data->tempat_lahir_ayah) || empty($data->tgl_lahir_ayah)) ? 'font-style: italic; color: #6c757d;' : '' }}">
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                             <i class="fas fa-calendar text-muted"></i>
                                         </span>
                                         <input type="text" class="form-control border-start-0 bg-light" readonly
-                                           value="{{ ($data->tempat_lahir_ibu && $data->tgl_lahir_ibu) ? $data->tempat_lahir_ibu . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ibu)->format('d F Y') : 'Belum diisi' }}"
+                                           value="{{ ($data->tempat_lahir_ibu && $data->tgl_lahir_ibu) ? $data->tempat_lahir_ibu . ', ' . \Carbon\Carbon::parse($data->tgl_lahir_ibu)->locale('id')->translatedFormat('d F Y') : 'Belum diisi' }}"
                                            style="{{ (empty($data->tempat_lahir_ibu) || empty($data->tgl_lahir_ibu)) ? 'font-style: italic; color: #6c757d;' : '' }}">
                                     </div>
                                 </div>

@@ -35,6 +35,8 @@ class RemajaController extends Controller
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
             'pendidikan' => 'nullable|string|max:100',
             'pekerjaan' => 'nullable|string|max:100',
         ], [
@@ -44,6 +46,9 @@ class RemajaController extends Controller
             'nama.max' => 'Nama remaja maksimal 255 karakter.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
+            'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+            'tempat_lahir.max' => 'Tempat lahir maksimal 100 karakter.',
+            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
             'pendidikan.max' => 'Pendidikan maksimal 100 karakter.',
             'pekerjaan.max' => 'Pekerjaan maksimal 100 karakter.',
         ]);
@@ -83,6 +88,8 @@ class RemajaController extends Controller
             'id_kk' => 'required|exists:jemaat,id',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
             'pendidikan' => 'nullable|string|max:100',
             'pekerjaan' => 'nullable|string|max:100',
         ], [
@@ -92,6 +99,9 @@ class RemajaController extends Controller
             'nama.max' => 'Nama remaja maksimal 255 karakter.',
             'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
             'jenis_kelamin.in' => 'Jenis kelamin harus L atau P.',
+            'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+            'tempat_lahir.max' => 'Tempat lahir maksimal 100 karakter.',
+            'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
             'pendidikan.max' => 'Pendidikan maksimal 100 karakter.',
             'pekerjaan.max' => 'Pekerjaan maksimal 100 karakter.',
         ]);

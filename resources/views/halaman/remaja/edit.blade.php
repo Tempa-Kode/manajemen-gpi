@@ -138,6 +138,40 @@
                                 </div>
                             </div>
 
+                            <!-- Tempat Lahir -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tempat_lahir" class="form-label text-dark fw-bold">
+                                        <i class="fas fa-location text-success me-2"></i>Tempat Lahir
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control @error('tempat_lahir') is-invalid @enderror"
+                                           id="tempat_lahir" name="tempat_lahir"
+                                           value="{{ old('tempat_lahir', $remaja->tempat_lahir) }}">
+                                    @error('tempat_lahir')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Tanggal Lahir -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tanggal_lahir" class="form-label text-dark fw-bold">
+                                        <i class="fas fa-calendar text-success me-2"></i>Tanggal Lahir
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="date"
+                                           class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                           id="tanggal_lahir" name="tanggal_lahir"
+                                           value="{{ old('tanggal_lahir', $remaja->tanggal_lahir) }}">
+                                    @error('tanggal_lahir')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <!-- Pendidikan -->
                             <div class="col-md-6">
                                 <div class="form-group">
