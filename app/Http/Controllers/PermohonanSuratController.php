@@ -30,7 +30,7 @@ class PermohonanSuratController extends Controller
             ->get();
 
         // Ambil data keluarga untuk dropdown
-        $keluarga = Jemaat::select('id', 'nama_keluarga')->orderBy('nama_keluarga')->get();
+        $keluarga = Jemaat::select('id', 'id_kk', 'nama_keluarga')->orderBy('nama_keluarga')->get();
         // dd($templates->nama_template);
         return view('landing.form-permohonan-surat', compact('templates', 'permohonan', 'keluarga'));
     }
@@ -175,7 +175,7 @@ class PermohonanSuratController extends Controller
                 'tanggal_lahir' => $jemaat->tgl_lahir_ayah ? \Carbon\Carbon::parse($jemaat->tgl_lahir_ayah)->format('d/m/Y') : '',
                 'ttl' => ($jemaat->tempat_lahir_ayah && $jemaat->tgl_lahir_ayah)
                         ? $jemaat->tempat_lahir_ayah . ', ' . \Carbon\Carbon::parse($jemaat->tgl_lahir_ayah)->translatedFormat('d F Y')
-                        : ''
+                        : ($jemaat->tempat_lahir_ayah ? $jemaat->tempat_lahir_ayah : '')
             ];
         }
 
@@ -189,7 +189,7 @@ class PermohonanSuratController extends Controller
                 'tanggal_lahir' => $jemaat->tgl_lahir_ibu ? \Carbon\Carbon::parse($jemaat->tgl_lahir_ibu)->format('d/m/Y') : '',
                 'ttl' => ($jemaat->tempat_lahir_ibu && $jemaat->tgl_lahir_ibu)
                         ? $jemaat->tempat_lahir_ibu . ', ' . \Carbon\Carbon::parse($jemaat->tgl_lahir_ibu)->translatedFormat('d F Y')
-                        : ''
+                        : ($jemaat->tempat_lahir_ibu ? $jemaat->tempat_lahir_ibu : '')
             ];
         }
 
@@ -204,7 +204,7 @@ class PermohonanSuratController extends Controller
                     'tanggal_lahir' => $remaja->tanggal_lahir ? \Carbon\Carbon::parse($remaja->tanggal_lahir)->format('d/m/Y') : '',
                     'ttl' => ($remaja->tempat_lahir && $remaja->tanggal_lahir)
                             ? $remaja->tempat_lahir . ', ' . \Carbon\Carbon::parse($remaja->tanggal_lahir)->translatedFormat('d F Y')
-                            : ''
+                            : ($remaja->tempat_lahir ? $remaja->tempat_lahir : '')
                 ];
             }
         }
@@ -220,7 +220,7 @@ class PermohonanSuratController extends Controller
                     'tanggal_lahir' => $sm->tanggal_lahir ? \Carbon\Carbon::parse($sm->tanggal_lahir)->format('d/m/Y') : '',
                     'ttl' => ($sm->tempat_lahir && $sm->tanggal_lahir)
                             ? $sm->tempat_lahir . ', ' . \Carbon\Carbon::parse($sm->tanggal_lahir)->translatedFormat('d F Y')
-                            : ''
+                            : ($sm->tempat_lahir ? $sm->tempat_lahir : '')
                 ];
             }
         }

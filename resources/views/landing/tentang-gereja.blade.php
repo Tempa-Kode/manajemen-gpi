@@ -26,6 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('landing/assets/css/main.css') }}" rel="stylesheet">
+  <link href="{{ asset('landing/assets/css/style.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iLanding
@@ -56,7 +57,7 @@
     </div><!-- End Page Title -->
 
     <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+    <section id="starter-section" class="starter-section section background-cc">
 
         <div class="container" data-aos="fade-up">
             <ul class="nav nav-tabs" id="myTab" role="tablist">

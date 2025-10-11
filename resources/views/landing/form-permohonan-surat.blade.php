@@ -369,9 +369,23 @@
                                                         @foreach ($keluarga as $kel)
                                                             <option value="{{ $kel->nama_keluarga }}"
                                                                 data-id="{{ $kel->id }}">
-                                                                {{ $kel->nama_keluarga }}</option>
+                                                                {{ $kel->id_kk }} - {{ $kel->nama_keluarga }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="id_kk" class="form-label">ID KK <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" name="nama_field[]" value="id_kk">
+                                                    <select class="form-control" id="id_kk" name="isi_field[]"
+                                                        required disabled>
+                                                        <option value="">Pilih keluarga terlebih dahulu</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">
+                                                        <i class="fas fa-info-circle"></i>
+                                                        ID KK akan terisi otomatis saat memilih keluarga
+                                                    </small>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="nama" class="form-label">Nama <span
@@ -603,10 +617,23 @@
             // Event listener untuk dropdown keluarga
             $('#nama-keluarga').on('change', function() {
                 const keluargaId = $(this).find('option:selected').data('id');
+                const selectedOption = $(this).find('option:selected');
+                const selectedText = selectedOption.text();
                 const namaSelect = $('#nama');
+                const idKkSelect = $('#id_kk');
 
                 if (keluargaId) {
-                    // Reset dan disable nama dropdown
+                    // Auto fill ID KK dari text yang dipilih
+                    const idKk = selectedText.split(' - ')[0]; // Mengambil bagian sebelum " - "
+                    console.log('Auto-filling ID KK:', idKk); // Debug log
+                    idKkSelect.html(`<option value="${idKk}" selected>${idKk}</option>`);
+                    idKkSelect.prop('disabled', false);
+
+                    // Berikan feedback visual bahwa ID KK telah terisi otomatis
+                    idKkSelect.addClass('auto-filled');
+                    setTimeout(function() {
+                        idKkSelect.removeClass('auto-filled');
+                    }, 2000); // Reset dan disable nama dropdown
                     namaSelect.prop('disabled', true).html('<option value="">Memuat...</option>');
 
                     // Reset form fields
@@ -621,6 +648,7 @@
                             keluarga_id: keluargaId
                         },
                         success: function(response) {
+                            console.log('Response received:', response); // Debug log
                             if (response.success) {
                                 namaSelect.html(
                                     '<option value="">Pilih Anggota Keluarga</option>');
@@ -630,12 +658,16 @@
 
                                 // Tambahkan option untuk setiap anggota keluarga
                                 response.anggota.forEach(function(anggota, index) {
+                                    console.log('Processing anggota:',
+                                        anggota); // Debug log
+
                                     // Simpan data lengkap anggota
                                     anggotaData[anggota.nama] = {
                                         jenis_kelamin: anggota.jenis_kelamin,
                                         tempat_lahir: anggota.tempat_lahir,
                                         tanggal_lahir: anggota.tanggal_lahir,
                                         ttl: anggota.ttl
+                                        // ttl: ${anggota.tempat_lahir}, ${anggota.tanggal_lahir}
                                     };
 
                                     namaSelect.append(
@@ -656,8 +688,11 @@
                         }
                     });
                 } else {
-                    // Reset nama dropdown jika tidak ada keluarga yang dipilih
+                    // Reset semua dropdown jika tidak ada keluarga yang dipilih
                     namaSelect.prop('disabled', true).html(
+                        '<option value="">Pilih keluarga terlebih dahulu</option>');
+
+                    idKkSelect.prop('disabled', true).html(
                         '<option value="">Pilih keluarga terlebih dahulu</option>');
 
                     // Reset form fields
@@ -670,18 +705,27 @@
             // Event listener untuk dropdown nama - Auto fill data
             $('#nama').on('change', function() {
                 const selectedNama = $(this).val();
+                console.log('Selected nama:', selectedNama); // Debug log
+                console.log('Available anggotaData:', anggotaData); // Debug log
 
                 if (selectedNama && anggotaData[selectedNama]) {
                     const data = anggotaData[selectedNama];
+                    console.log('Data for selected nama:', data); // Debug log
 
                     // Auto fill jenis kelamin
                     $('#jenis-kelamin').val(data.jenis_kelamin);
 
-                    // Auto fill tempat tanggal lahir
-                    if (data.ttl) {
+                    // Auto fill tempat tanggal lahir - tangani kasus dengan atau tanpa tanggal lahir
+                    if (data.ttl && data.ttl.trim() !== '') {
                         $('#ttl').val(data.ttl);
+                        console.log('TTL filled with:', data.ttl); // Debug log
+                    } else if (data.tempat_lahir && data.tempat_lahir.trim() !== '') {
+                        // Jika hanya ada tempat lahir tanpa tanggal lahir
+                        $('#ttl').val(data.tempat_lahir);
+                        console.log('TTL filled with tempat_lahir only:', data.tempat_lahir); // Debug log
                     } else {
                         $('#ttl').val('');
+                        console.log('TTL cleared - no data available'); // Debug log
                     }
 
                     // Berikan feedback visual bahwa data telah terisi otomatis
@@ -693,6 +737,7 @@
                     // Reset fields jika nama tidak dipilih
                     $('#jenis-kelamin').val('');
                     $('#ttl').val('');
+                    console.log('Fields reset - no valid selection'); // Debug log
                 }
             });
         });
