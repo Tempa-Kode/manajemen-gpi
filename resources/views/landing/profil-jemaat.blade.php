@@ -103,43 +103,45 @@
 
 <footer id="footer" class="footer">
 
-    <div class="container footer-top">
-        <div class="row gy-4 justify-content-between">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">GPI SIdang Perawang</span>
-                </a>
-                <div class="footer-contact pt-3">
-                    <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
-                    <p>Kabupanten Siak, Riau</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+62 853 0875 8765</span></p>
-                    <p><strong>Email:</strong> <span>info@gpi.org</span></p>
+        <div class="container footer-top">
+            <div class="row gy-4 justify-content-between">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">GPI SIdang Perawang</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
+                        <p>Kabupanten Siak, Riau</p>
+                        <p class="mt-3"><strong>Phone Gereja:</strong> <span>0882-7107-7095</span></p>
+                        <p class="mt-3"><strong>Contact System:</strong> <span>082267087169 </span></p>
+                        <p><strong>Email:</strong> <span>info@gpi.org</span></p>
+                    </div>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/youth_gpi_prwg?igsh=c3owNHRnNGhyMjV4"><i
+                                class="bi bi-instagram"></i></a>
+                    </div>
                 </div>
-                <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/youth_gpi_prwg?igsh=c3owNHRnNGhyMjV4"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tentang Gereja</a></li>
-                    <li><a href="#">Jadwal Pelayanan</a></li>
-                    <li><a href="#">Pendaftaran Ibadah</a></li>
-                    <li><a href="#">Struktur Gereja</a></li>
-                </ul>
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tentang Gereja</a></li>
+                        <li><a href="#">Jadwal Pelayanan</a></li>
+                        <li><a href="#">Pendaftaran Ibadah</a></li>
+                        <li><a href="#">Struktur Gereja</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>All Rights Reserved</span></p>
-    </div>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>by Olivia Veronika Sitinjak</span></p>
+        </div>
 
-</footer>
+    </footer>
 
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

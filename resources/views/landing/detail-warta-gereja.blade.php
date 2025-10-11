@@ -336,7 +336,8 @@
                     <div class="footer-contact pt-3">
                         <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
                         <p>Kabupanten Siak, Riau</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>082267087169</span></p>
+                        <p class="mt-3"><strong>Phone Gereja:</strong> <span>0882-7107-7095</span></p>
+                        <p class="mt-3"><strong>Contact System:</strong> <span>082267087169 </span></p>
                         <p><strong>Email:</strong> <span>info@gpi.org</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
@@ -361,8 +362,7 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>All Rights
-                    Reserved</span></p>
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>by Olivia Veronika Sitinjak</span></p>
         </div>
 
     </footer>

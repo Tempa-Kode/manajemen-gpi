@@ -28,6 +28,72 @@
   <link href="{{ asset('landing/assets/css/main.css') }}" rel="stylesheet">
   <link href="{{ asset('landing/assets/css/style.css') }}" rel="stylesheet">
 
+  <style>
+    /* center the blockquote in the page */
+    .blockquote-wrapper {
+        display: flex;
+        height: 60vh;
+        padding: 0 20px;
+    }
+
+    /* Blockquote main style */
+    .blockquote {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        color: #ffffff;
+        padding: 30px 0;
+        width: 100%;
+        max-width: 500px;
+        z-index: 1;
+        margin: 80px auto;
+        align-self: center;
+        border-top: solid 3px;
+        border-bottom: solid 3px;
+    }
+
+    /* Blockquote header */
+    .blockquote h1 {
+        position: relative;
+        color: #241e1e;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1;
+        margin: 0;
+    }
+
+    /* Blockquote right double quotes */
+    .blockquote:after {
+        position: absolute;
+        content: "”";
+        color: rgba(255, 255, 255, 1);
+        font-size: 10rem;
+        line-height: 0;
+        bottom: -43px;
+        right: 30px;
+    }
+
+    /* increase header size after 600px */
+    @media all and (min-width: 600px) {
+        .blockquote h1 {
+            font-size: 60px;
+        }
+
+    }
+
+    /* Blockquote subheader */
+    .blockquote h4 {
+        position: relative;
+        color: #292a2b;
+        font-size: 1.4rem;
+        font-weight: normal;
+        line-height: 1;
+        margin: 0;
+        padding-top: 20px;
+        z-index: 1;
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: iLanding
   * Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
@@ -152,7 +218,7 @@
                                         </div>
                                         <h4 class="card-title mb-0 text-primary">Visi</h4>
                                     </div>
-                                    <blockquote class="blockquote">
+                                    <blockquote class="">
                                         <p class="mb-0 fst-italic">"Menjadi Gereja yang di Berkati untuk Menjadi Berkat"</p>
                                     </blockquote>
                                 </div>
@@ -190,6 +256,17 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- SLOGAN --}}
+                    <div class="blockquote-wrapper">
+                        <div class="blockquote">
+                            <h1>
+                                kamu akan menjadi umat-Ku, dan Aku akan menjadi Allahmu
+                            </h1>
+                            <h4>&mdash;Yeremia 30:22</h4>
+                        </div>
+                    </div>
+                    {{-- SLOGAN --}}
                 </div>
                 <div class="tab-pane fade p-3" id="tujuan-tab-pane" role="tabpanel" aria-labelledby="tujuan-tab" tabindex="0">
                     <h3>Tujuan GPI Sidang Perawang</h3>
@@ -208,7 +285,13 @@
                                     <div class="bg-info rounded-circle p-3 mx-auto mb-3" style="width: 60px; height: 60px;">
                                         <i class="bi bi-telephone-fill text-white fs-4"></i>
                                     </div>
-                                    <h5 class="card-title text-info">Nomor Telepon</h5>
+                                    <h5 class="card-title text-info">Phone Gereja</h5>
+                                    <p class="card-text">
+                                        <a href="tel:088271077095" class="text-decoration-none">
+                                            <strong>0882-7107-7095</strong>
+                                        </a>
+                                    </p>
+                                    <h5 class="card-title text-info">Contact System</h5>
                                     <p class="card-text">
                                         <a href="tel:082267087169" class="text-decoration-none">
                                             <strong>082267087169</strong>
@@ -265,7 +348,8 @@
           <div class="footer-contact pt-3">
             <p>Jl. Pery No. 36 Km. 3 Perawang, Tualang</p>
             <p>Kabupanten Siak, Riau</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>082267087169</span></p>
+            <p class="mt-3"><strong>Phone Gereja:</strong> <span>0882-7107-7095</span></p>
+            <p class="mt-3"><strong>Contact System:</strong> <span>082267087169 </span></p>
             <p><strong>Email:</strong> <span>info@gpi.org</span></p>
           </div>
           <div class="social-links d-flex mt-4">
@@ -289,7 +373,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">GPI Sidang Perawang</strong> <span>by Olivia Veronika Sitinjak</span></p>
     </div>
 
   </footer>
