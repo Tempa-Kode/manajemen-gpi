@@ -171,7 +171,7 @@
         <table class="header-table">
             <tr>
                 <td class="logo-cell">
-                    <img src="{{ public_path('assets/img/logo-gpi.png') }}" alt="Logo" style="height:80px;">
+                    <img src="{{ public_path("assets/img/logo-gpi.png") }}" alt="Logo" style="height:80px;">
                 </td>
                 <td class="content-cell">
                     <strong class="title">GPI Sidang Perawang</strong>
