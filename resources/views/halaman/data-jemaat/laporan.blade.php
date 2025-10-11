@@ -19,8 +19,32 @@
         }
 
         .header {
+            margin-bottom: 20px;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .header-table td {
+            border: none;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .header-table .logo-cell {
+            width: 15%;
+            text-align: left;
+        }
+
+        .header-table .content-cell {
+            width: 70%;
             text-align: center;
-            margin-bottom: 6px;
+        }
+
+        .header-table .space-cell {
+            width: 15%;
         }
 
         .header .title {
@@ -144,14 +168,21 @@
 
 <body>
     <div class="header">
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
-            <!-- optional logo area; replace with an <img> tag if you have a logo -->
-            <div style="text-align:center;">
-                <strong class="title">GPI Sidang Perawang</strong>
-                <div class="subtitle">Laporan Data Jemaat</div>
-            </div>
-        </div>
-        <div class="meta">Dicetak: {{ date("d M Y") }}</div>
+        <table class="header-table">
+            <tr>
+                <td class="logo-cell">
+                    <img src="{{ public_path('assets/img/logo-gpi.png') }}" alt="Logo" style="height:80px;">
+                </td>
+                <td class="content-cell">
+                    <strong class="title">GPI Sidang Perawang</strong>
+                    <div class="subtitle">Laporan Data Jemaat</div>
+                    <div class="meta">Dicetak: {{ date("d M Y") }}</div>
+                </td>
+                <td class="space-cell">
+                    <!-- Empty cell for balance -->
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div class="line"></div>
