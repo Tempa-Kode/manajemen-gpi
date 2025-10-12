@@ -270,7 +270,7 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td style="font-style: italic;">{{ $data->ibu ?? "belum di isi" }}</td>
+                            <td>{{ $data->ibu ?? "belum di isi" }}</td>
                             <td>Perempuan</td>
                             <td>{{ $data->tempat_lahir_ibu ?? "-" }}</td>
                             <td>{{ $data->tgl_lahir_ibu ? \Carbon\Carbon::parse($data->tgl_lahir_ibu)->format("d-m-Y") : "-" }}
