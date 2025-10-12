@@ -37,7 +37,7 @@
                         <strong>Error!</strong> {{ session('error') }}
                     </div>
                 @endif
-
+                    {{-- @dd($data->id_kk) --}}
                 <div class="card-body p-4">
                     <form action="{{ route('data-jemaat.update', $data->id) }}" method="POST">
                         @csrf
@@ -54,7 +54,7 @@
                                         <span class="input-group-text">
                                             <i class="fas fa-hashtag"></i>
                                         </span>
-                                        <input class="form-control" type="number" name="id_kk" id="id_kk"
+                                        <input class="form-control" type="text" name="id_kk" id="id_kk"
                                                value="{{ old('id_kk', $data->id_kk) }}" required>
                                     </div>
                                     @error('id_kk')

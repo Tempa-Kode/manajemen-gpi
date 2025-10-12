@@ -27,7 +27,7 @@
                     @method('POST')
                     <div class="form-group">
                         <label for="id_kk" class="form-control-label">ID KK</label>
-                        <input class="form-control" type="number" name="id_kk" id="id_kk" value="{{ old('id_kk') }}">
+                        <input class="form-control" type="text" name="id_kk" id="id_kk" value="{{ old('id_kk') }}">
                         @error('id_kk')
                             <span class="text-danger fst-italic">{{ $message }}</span>
                         @enderror

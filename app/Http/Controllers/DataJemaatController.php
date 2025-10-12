@@ -33,7 +33,7 @@ class DataJemaatController extends Controller
     public function store(Request $request)
     {
         $validasi = $request->validate([
-            'id_kk' => 'required|numeric|unique:jemaat,id_kk',
+            'id_kk' => 'required|unique:jemaat,id_kk',
             'nama_keluarga' => 'required|string|max:255',
             'ayah' => 'nullable|string|max:255',
             'tempat_lahir_ayah' => 'nullable|string|max:100',
@@ -46,7 +46,6 @@ class DataJemaatController extends Controller
             'tanggal_pendaftaran' => 'nullable|date',
         ], [
             'id_kk.required' => 'ID KK harus diisi.',
-            'id_kk.numeric' => 'ID KK harus berupa angka.',
             'id_kk.unique' => 'ID KK sudah terdaftar.',
             'nama_keluarga.required' => 'Nama keluarga harus diisi.',
             'nama_keluarga.max' => 'Nama keluarga maksimal 255 karakter.',
@@ -94,7 +93,7 @@ class DataJemaatController extends Controller
         $data = Jemaat::findOrFail($id);
 
         $validasi = $request->validate([
-            'id_kk' => 'required|numeric|unique:jemaat,id_kk,' . $id,
+            'id_kk' => 'required|unique:jemaat,id_kk,' . $id,
             'nama_keluarga' => 'required|string|max:255',
             'ayah' => 'nullable|string|max:255',
             'tempat_lahir_ayah' => 'nullable|string|max:100',
@@ -107,7 +106,6 @@ class DataJemaatController extends Controller
             'tanggal_pendaftaran' => 'nullable|date',
         ], [
             'id_kk.required' => 'ID KK harus diisi.',
-            'id_kk.numeric' => 'ID KK harus berupa angka.',
             'id_kk.unique' => 'ID KK sudah terdaftar.',
             'nama_keluarga.required' => 'Nama keluarga harus diisi.',
             'nama_keluarga.max' => 'Nama keluarga maksimal 255 karakter.',

@@ -26,7 +26,7 @@ class Jemaat extends Model
     ];
 
     protected $casts = [
-        'id_kk' => 'integer',
+        // 'id_kk' => 'integer',
         'tanggal_pendaftaran' => 'date',
         'tgl_keluar' => 'date',
         'tgl_meninggal_ayah' => 'date',
